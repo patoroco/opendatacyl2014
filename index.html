@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap-3.3.1.css" rel="stylesheet">
+    <link href="css/bootstrap-theme-3.3.1.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,10 +16,88 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+	<script type="text/javascript">
+		// Replace that on final version with CSS compiled version
+	    less = { 
+	        env: "development", // or "production"
+	        async: true,       // load imports async
+	        fileAsync: false,   // load imports async when in a page under
+	                            // a file protocol
+	        poll: 1000,         // when in watch mode, time in ms between polls
+	        functions: {},      // user functions, keyed by name
+	        dumpLineNumbers: "comments", // or "mediaquery" or "all"
+	        relativeUrls: true,// whether to adjust url's to be relative
+	    };
+	</script>
+	
+	<link rel="stylesheet/less" type="text/css" href="less/styles.less" />
+	<script type="text/javascript" src="js/less-2.1.0.min.js"></script>
+	
+	<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
+	
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <iframe id="header_map" src="http://jorge.cartodb.com/viz/9b69f6d8-fd7a-11e3-a41e-0e10bcd91c2b/embed_map"></iframe>
+    
+    <div class="container-fluid">        
+        <form id="form_search" class="form-inline" role="form">
+          <div class="form-group">
+            <div class="input-group">
+              <label class="sr-only" for="search_text">Trabajo</label>
+              <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="province">Provincia</label>
+            <select id="province" class="form-control">
+                <option>Palencia</option>
+                <option>Ávila</option>
+                <option>Soria</option>
+                <option>Valladolid</option>
+                <option>Burgos</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-default">Buscar</button>
+        </form>
+        
+        <div id="last_offers" class="row">
+            <div class="col-md-4"> 
+                <h3>Últimas ofertas</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#">(hoy) oferta</a></li>
+                    <li><a href="#">(hace 3 días) oferta</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                    <li><a href="#">listado de últimas ofertas publicadas</a></li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <img src="http://placekitten.com/g/750/350" alt="image" />
+            </div>
+        </div>
 
+
+    
+        <footer>
+        <p class="pull-right">
+            <a href="#">Inicio</a> |
+            <a href="#">ofertas de trabajo</a> |
+            <a href="#">estudio de evolución del empleo</a> |
+            <a href="#">acerca de cyljo</a>
+        </p>
+        </footer>
+    </div>
+    
+    
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
