@@ -7,7 +7,6 @@
 
     function MainController($scope, $state) {
         var vm = this;
-        vm.hola = 'HOLA!';
     }
 
     function stateProvider($stateProvider, $urlRouterProvider) {

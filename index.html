@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="opendatacyl2014">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>CYLJOB (OpenDataCyL2014)</title>
 
-      <!-- build:css css/opendatacyl.css -->
-      <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-      <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-      <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
-      <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
-      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="css/app.css">
-      <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
-      <!-- endbuild -->
+    <!-- build:css css/opendatacyl.css -->
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
+    <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+    <!-- endbuild -->
 
-      <!-- build:js js/opendatacyl.min.js -->
-      <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-      <script src="bower_components/jquery/dist/jquery.min.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-      <script src="bower_components/d3/d3.js"></script>
-      <script src="bower_components/nvd3/nv.d3.js"></script>
-      <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
-      <script src="js/app.js"></script>
-      <!-- endbuild -->
+    <!-- build:js js/opendatacyl.min.js -->
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/nv.d3.js"></script>
+    <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <script src="js/less-2.1.0.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- endbuild -->
 
-	<script type="text/javascript">
-		// Replace that on final version with CSS compiled version
-	    less = { 
-	        env: "development", // or "production"
-	        async: true,       // load imports async
-	        fileAsync: false,   // load imports async when in a page under
-	                            // a file protocol
-	        poll: 1000,         // when in watch mode, time in ms between polls
-	        functions: {},      // user functions, keyed by name
-	        dumpLineNumbers: "comments", // or "mediaquery" or "all"
-	        relativeUrls: true// whether to adjust url's to be relative
-	    };
-	</script>
-	
-	<link rel="stylesheet/less" type="text/css" href="less/styles.less" />
-	<script type="text/javascript" src="js/less-2.1.0.min.js"></script>
-	
-	<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
-	
-  </head>
-  <body ng-controller="MainController as mainController">
-    <iframe id="header_map" src="http://jorge.cartodb.com/viz/9b69f6d8-fd7a-11e3-a41e-0e10bcd91c2b/embed_map"></iframe>
-    <div class="container-fluid">
-        <form id="form_search" class="form-inline" role="form">
-          <div class="form-group">
+    <script type="text/javascript">
+        // Replace that on final version with CSS compiled version
+        less = {
+            env: "development", // or "production"
+            async: true,       // load imports async
+            fileAsync: false,   // load imports async when in a page under
+                                // a file protocol
+            poll: 1000,         // when in watch mode, time in ms between polls
+            functions: {},      // user functions, keyed by name
+            dumpLineNumbers: "comments", // or "mediaquery" or "all"
+            relativeUrls: true// whether to adjust url's to be relative
+        };
+    </script>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
+
+</head>
+<body ng-controller="MainController as mainController">
+<iframe id="header_map" src="http://jorge.cartodb.com/viz/9b69f6d8-fd7a-11e3-a41e-0e10bcd91c2b/embed_map"></iframe>
+<div class="container-fluid">
+    <form id="form_search" class="form-inline" role="form">
+        <div class="form-group">
             <div class="input-group">
-              <label class="sr-only" for="search_text">Trabajo</label>
-              <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?">
+                <label class="sr-only" for="search_text">Trabajo</label>
+                <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?">
             </div>
-          </div>
-          <div class="form-group">
+        </div>
+        <div class="form-group">
             <label class="sr-only" for="province">Provincia</label>
             <select id="province" class="form-control">
                 <option>Palencia</option>
@@ -70,44 +69,43 @@
                 <option>Valladolid</option>
                 <option>Burgos</option>
             </select>
-          </div>
-          <button type="submit" class="btn btn-lg btn-success">Buscar</button>
-        </form>
-
-        <div id="last_offers" class="row">
-            <div class="col-md-4"> 
-                <h3>Últimas ofertas</h3>
-                <ul class="list-unstyled">
-                    <li><a href="#">(hoy) oferta</a></li>
-                    <li><a href="#">(hace 3 días) oferta</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                    <li><a href="#">listado de últimas ofertas publicadas</a></li>
-                </ul>
-            </div>
-            <div class="col-md-8">
-                <img src="http://placekitten.com/g/750/350" alt="image" />
-            </div>
         </div>
+        <button type="submit" class="btn btn-lg btn-success">Buscar</button>
+    </form>
+
+    <div id="last_offers" class="row">
+        <div class="col-md-4">
+            <h3>Últimas ofertas</h3>
+            <ul class="list-unstyled">
+                <li><a href="#">(hoy) oferta</a></li>
+                <li><a href="#">(hace 3 días) oferta</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
+                <li><a href="#">listado de últimas ofertas publicadas</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <img src="http://placekitten.com/g/750/350" alt="image"/>
+        </div>
+    </div>
 
 
-    
-        <footer>
+    <footer>
         <p class="pull-right">
             <a href="#">Inicio</a> |
             <a href="#">ofertas de trabajo</a> |
             <a href="#">estudio de evolución del empleo</a> |
             <a href="#">acerca de cyljo</a>
         </p>
-        </footer>
-    </div>
+    </footer>
+</div>
 
-  </body>
+</body>
 </html>
