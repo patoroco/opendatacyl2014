@@ -4,7 +4,7 @@
         <ul class="list-unstyled" ng-repeat="job in mainController.lastJobs">
             <li><a ui-sref="jobDetail">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
         </ul>
-        <li><a href="#">listado de últimas ofertas publicadas</a></li>
+        <li><a ui-sref="jobs">listado de últimas ofertas publicadas</a></li>
     </div>
     <div class="col-md-8">
         <img src="http://placekitten.com/g/750/350" alt="image"/>

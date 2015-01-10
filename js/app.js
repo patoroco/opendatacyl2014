@@ -6,6 +6,13 @@
 
     var api = 'http://178.62.198.195/api/';
 
+    //FIXME maquetar
+    //FIXME llamadas de backend
+    //FIXME estadisticas
+    //FIXME dominio
+    //FIXME mapa de cartodb
+    //FIXME emails
+
     function MainController($scope, $state, jobsService) {
         var vm = this;
 
