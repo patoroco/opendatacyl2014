@@ -30,6 +30,7 @@
     <script src="bower_components/nvd3/nv.d3.js"></script>
     <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
     <script src="js/less-2.1.0.min.js"></script>
+    <script src="js/jobs.service.js"></script>
     <script src="js/app.js"></script>
     <!-- endbuild -->
 
@@ -57,39 +58,26 @@
         <div class="form-group">
             <div class="input-group">
                 <label class="sr-only" for="search_text">Trabajo</label>
-                <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?">
+                <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?"
+                       ng-model="mainController.textToSearch">
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="province">Provincia</label>
-            <select id="province" class="form-control">
-                <option>Palencia</option>
-                <option>Ávila</option>
-                <option>Soria</option>
-                <option>Valladolid</option>
-                <option>Burgos</option>
+            <label class="sr-only" for="region">Provincia</label>
+            <select id="region" class="form-control" ng-options="region for region in mainController.regions"
+                    ng-model="mainController.regionToSearch">
             </select>
         </div>
-        <button type="submit" class="btn btn-lg btn-success">Buscar</button>
+        <button type="submit" class="btn btn-lg btn-success" ng-click="mainController.search()">Buscar</button>
     </form>
 
     <div id="last_offers" class="row">
         <div class="col-md-4">
             <h3>Últimas ofertas</h3>
-            <ul class="list-unstyled">
-                <li><a href="#">(hoy) oferta</a></li>
-                <li><a href="#">(hace 3 días) oferta</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">(hace 3 días) oferta con el texto muy largo...</a></li>
-                <li><a href="#">listado de últimas ofertas publicadas</a></li>
+            <ul class="list-unstyled" ng-repeat="job in mainController.lastJobs">
+                <li><a href="#">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
             </ul>
+            <li><a href="#">listado de últimas ofertas publicadas</a></li>
         </div>
         <div class="col-md-8">
             <img src="http://placekitten.com/g/750/350" alt="image"/>
@@ -102,7 +90,7 @@
             <a href="#">Inicio</a> |
             <a href="#">ofertas de trabajo</a> |
             <a href="#">estudio de evolución del empleo</a> |
-            <a href="#">acerca de cyljo</a>
+            <a href="#">acerca de cyljob</a>
         </p>
     </footer>
 </div>

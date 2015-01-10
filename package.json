@@ -1,0 +1,17 @@
+{
+  "name": "opendatacyl2014",
+  "main": "server.js",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "repository": "",
+  "license": "",
+  "dependencies": {
+    "express": "~4.10.2",
+    "nano": "~6.0.1",
+    "body-parser": "~1.9.2"
+  },
+  "devDependencies": {
+    "bower": "^1.3.1"
+  }
+}
