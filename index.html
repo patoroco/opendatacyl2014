@@ -71,26 +71,14 @@
         <button type="submit" class="btn btn-lg btn-success" ng-click="mainController.search()">Buscar</button>
     </form>
 
-    <div id="last_offers" class="row">
-        <div class="col-md-4">
-            <h3>Últimas ofertas</h3>
-            <ul class="list-unstyled" ng-repeat="job in mainController.lastJobs">
-                <li><a href="#">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
-            </ul>
-            <li><a href="#">listado de últimas ofertas publicadas</a></li>
-        </div>
-        <div class="col-md-8">
-            <img src="http://placekitten.com/g/750/350" alt="image"/>
-        </div>
-    </div>
-
+    <div ui-view id="content"></div>
 
     <footer>
         <p class="pull-right">
-            <a href="#">Inicio</a> |
-            <a href="#">ofertas de trabajo</a> |
-            <a href="#">estudio de evolución del empleo</a> |
-            <a href="#">acerca de cyljob</a>
+            <a ui-sref="home">Inicio</a> |
+            <a ui-sref="jobs">ofertas de trabajo</a> |
+            <a ui-sref="evolution">estudio de evolución del empleo</a> |
+            <a ui-sref="about">acerca de cyljob</a>
         </p>
     </footer>
 </div>

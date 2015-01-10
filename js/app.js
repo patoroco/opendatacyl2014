@@ -1,15 +1,10 @@
 (function () {
     'use strict';
-    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap'
-        , 'jobs.service'
-    ])
+    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
-        .controller('MainController', ['$scope', '$state',
-            'jobsService'
-            , MainController]);
+        .controller('MainController', ['$scope', '$state', 'jobsService', MainController]);
 
     var api = 'http://178.62.198.195/api/';
-
 
     function MainController($scope, $state, jobsService) {
         var vm = this;
@@ -33,11 +28,7 @@
         }
 
         function search() {
-            jobsService.getJobsWithRegionAndText(vm.textToSearch, vm.regionToSearch).success(function (data, status) {
-                if (status == 200) {
-                    vm.newJobs = data;
-                }
-            }).error(treatError);
+            $state.go('jobs', {text: vm.textToSearch, region: vm.regionToSearch});
         }
 
         function treatError(data, status) {
@@ -49,22 +40,22 @@
         $urlRouterProvider.otherwise('/home');
         $stateProvider.state('error', {
             url: '/error/:statusError',
-            templateUrl: 'error.html'
+            templateUrl: 'pages/error.html'
         }).state('jobs', {
             url: '/jobs',
-            templateUrl: 'jobs.html'
+            templateUrl: 'pages/jobs.html'
         }).state('about', {
             url: '/about',
-            templateUrl: 'about.html'
+            templateUrl: 'pages/about.html'
         }).state('evolution', {
             url: '/evolution',
-            templateUrl: 'evolution.html'
+            templateUrl: 'pages/evolution.html'
         }).state('home', {
             url: '/home',
-            templateUrl: 'index.html'
-        }).state('detail', {
-            url: '/detail',
-            templateUrl: 'detail.html'
+            templateUrl: 'pages/home.html'
+        }).state('jobDetail', {
+            url: '/jobDetail',
+            templateUrl: 'pages/jobDetail.html'
         });
         //FIXME baja y resto páginas
     }
