@@ -20,8 +20,10 @@
 
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
         navigator.geolocation.getCurrentPosition(location);
-        vm.regionToSearch = 'Ávila';
         vm.search = search;
+
+        $scope.$watch('mainController.regionToSearch', function (data) {
+        });
 
         function location(location) {
             //FIXME procesar localización
