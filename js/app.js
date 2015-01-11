@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service'])
+    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .controller('MainController', ['$scope', '$state', 'jobsService', MainController]);
 
@@ -35,7 +35,7 @@
         }
 
         function search() {
-            $state.go('jobs', {text: vm.textToSearch, region: vm.regionToSearch});
+            $state.go('jobs', {region: vm.regionToSearch, text: vm.textToSearch});
         }
 
         function treatError(data, status) {
@@ -49,7 +49,7 @@
             url: '/error/:statusError',
             templateUrl: 'pages/error.html'
         }).state('jobs', {
-            url: '/jobs',
+            url: '/jobs?region&text',
             templateUrl: 'pages/jobs.html'
         }).state('about', {
             url: '/about',
@@ -61,7 +61,7 @@
             url: '/home',
             templateUrl: 'pages/home.html'
         }).state('jobDetail', {
-            url: '/jobDetail',
+            url: '/jobDetail/:id',
             templateUrl: 'pages/jobDetail.html'
         });
         //FIXME baja y resto páginas

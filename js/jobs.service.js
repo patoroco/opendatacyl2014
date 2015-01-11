@@ -6,18 +6,27 @@
     var api = 'http://178.62.198.195/api/';
 
     function jobsService($http, $cacheFactory) {
+        //FIXME caché
         return {
             getAllJobs: getAllJobs,
-            getJobsWithRegionAndText : getJobsWithRegionAndText
+            getJobsByRegionAndText : getJobsByRegionAndText,
+            getJobById : getJobById
         }
 
         function getAllJobs() {
             return $http.get(api + 'jobs/');
         }
 
-        function getJobsWithRegionAndText(text, region) {
+        function getJobsByRegionAndText(text, region) {
             //FIXME tener en cuenta region
-            return $http.get(api + 'jobs/?search_term=' + text);
+            var criteria = text && region ? ('?search_term=' + text) : ''
+            return $http.get(api + 'jobs/' + criteria);
+        }
+
+        function getJobById(id) {
+            //FIXME sólo buscar por id
+            //return $http.get(api + 'jobs/' + id);
+            return $http.get(api + 'jobs/');
         }
     }
 })();

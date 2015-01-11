@@ -1,1 +1,5 @@
-Jobs
+<div ng-controller="JobsController as jobsController">
+    <ul class="list-unstyled" ng-repeat="job in jobsController.jobs">
+        <li><a ui-sref="jobDetail({id:job.identificador})">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
+    </ul>
+</div>
