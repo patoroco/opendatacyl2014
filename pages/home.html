@@ -1,7 +1,7 @@
-<div id="last_offers" class="row">
+<div id="last_offers" class="row" ng-controller="JobsController as jobsController">
     <div class="col-md-4">
         <h3>Últimas ofertas</h3>
-        <ul class="list-unstyled" ng-repeat="job in mainController.lastJobs">
+        <ul class="list-unstyled" ng-repeat="job in jobsController.jobs">
             <li><a ui-sref="jobDetail({id:job.identificador})">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
         </ul>
         <li><a ui-sref="jobs">listado de últimas ofertas publicadas</a></li>

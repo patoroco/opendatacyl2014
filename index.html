@@ -32,6 +32,7 @@
     <script src="bower_components/less/dist/less.min.js"></script>
     <script src="js/jobs.controller.js"></script>
     <script src="js/jobs.service.js"></script>
+    <script src="js/email.service.js"></script>
     <script src="js/app.js"></script>
     <!-- endbuild -->
 
@@ -52,10 +53,10 @@
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
 
 </head>
-<body ng-controller="MainController as mainController">
+<body>
 <!--<iframe id="header_map" src="http://jorge.cartodb.com/viz/9b69f6d8-fd7a-11e3-a41e-0e10bcd91c2b/embed_map"></iframe>-->
 <div class="container-fluid">
-    <form id="form_search" class="form-inline" role="form">
+    <form id="form_search" class="form-inline" role="form" ng-controller="MainController as mainController">
         <div class="form-group">
             <div class="input-group">
                 <label class="sr-only" for="search_text">Trabajo</label>

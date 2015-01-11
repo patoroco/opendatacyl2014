@@ -9,17 +9,19 @@
         //FIXME caché
         return {
             getAllJobs: getAllJobs,
-            getJobsByRegionAndText : getJobsByRegionAndText,
-            getJobById : getJobById
+            getJobsByRegionAndText: getJobsByRegionAndText,
+            getJobById: getJobById
         }
 
         function getAllJobs() {
             return $http.get(api + 'jobs/');
         }
 
-        function getJobsByRegionAndText(text, region) {
-            //FIXME tener en cuenta region
-            var criteria = text && region ? ('?search_term=' + text) : ''
+        function getJobsByRegionAndText(region, text, when) {
+            //FIXME tener en cuenta region y when
+            //FIXME count
+            var criteria = text ? ('?search_term=' + text) : '';
+            //FIXME procesar when (whenever, month, day, week)
             return $http.get(api + 'jobs/' + criteria);
         }
 

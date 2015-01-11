@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller'])
+    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .controller('MainController', ['$scope', '$state', 'jobsService', MainController]);
 
@@ -21,11 +21,7 @@
         vm.regionToSearch = 'Ávila';
         vm.search = search;
 
-        jobsService.getAllJobs().success(function (data, status) {
-            if (status == 200) {
-                vm.lastJobs = data;
-            }
-        }).error(treatError);
+
 
         function location(location) {
             //FIXME procesar localización
@@ -49,7 +45,7 @@
             url: '/error/:statusError',
             templateUrl: 'pages/error.html'
         }).state('jobs', {
-            url: '/jobs?region&text',
+            url: '/jobs?region&text&when',
             templateUrl: 'pages/jobs.html'
         }).state('about', {
             url: '/about',
