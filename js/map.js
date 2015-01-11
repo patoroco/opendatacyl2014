@@ -21,7 +21,17 @@ function init_map() {
             map = vis.getNativeMap();
             map.setView(PROVINCE_COORD['Palencia'], 7, {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
             navigator.geolocation.getCurrentPosition(current_position_updated);
-        });
+
+			layers[1].setInteraction(true);
+			layers[1].setInteractivity(['nom_prov']);
+			layers[1].on('featureClick', function(e, latlng, pos, data, subLayerIndex) {
+			  console.log("mouse over polygon with data: " + data.nom_prov);
+
+			$("#region option").filter(function() {
+				return $(this).text().toLowerCase() == data.nom_prov.toLowerCase();
+			}).attr('selected', 'selected');
+		});
+	});
 }
 
 function current_position_updated(location) {
