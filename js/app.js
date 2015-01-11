@@ -26,10 +26,13 @@
         });
 
         function location(location) {
-            //FIXME procesar localización
-            /*  alert(location.coords.latitude);
-             alert(location.coords.longitude);
-             alert(location.coords.accuracy);*/
+            change_center(location.coords.latitude, location.coords.longitude);
+
+//             alert(location.coords.latitude);
+/*
+            alert(location.coords.longitude);
+            alert(location.coords.accuracy);
+*/
         }
 
         function search() {
