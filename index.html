@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
     <!-- endbuild -->
 
     <!-- build:js js/opendatacyl.min.js -->
@@ -29,11 +30,13 @@
     <script src="bower_components/nvd3/nv.d3.js"></script>
     <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
     <script src="bower_components/less/dist/less.min.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
     <script src="js/email.controller.js"></script>
     <script src="js/jobs.controller.js"></script>
     <script src="js/jobs.service.js"></script>
     <script src="js/email.service.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/map.js"></script>
     <!-- endbuild -->
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
@@ -51,16 +54,15 @@
             relativeUrls: true// whether to adjust url's to be relative
         };
     </script>
-
+    
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
-
 </head>
-<body>
-<div id="header_bar" class="container-fluid"><img src="img/logo.png"></div>
-<iframe id="header_map" src="http://jorge.cartodb.com/viz/9b69f6d8-fd7a-11e3-a41e-0e10bcd91c2b/embed_map"></iframe>
-<div id="header_call_to_action">ENCUENTRA TRABAJO CERCA DE TÍ</div>
-<div id="form_search" class="container-fluid">
-    <form class="form-inline" role="form" ng-controller="MainController as mainController">
+<body onload="init_map()">
+    <div id="header_bar" class="container-fluid"><img src="img/logo.png"></div>
+    <div id="header_map"></div>
+    <div id="header_call_to_action">ENCUENTRA TRABAJO CERCA DE TÍ</div>
+    <div class="container-fluid">
+        <form id="form_search" class="form-inline" role="form" ng-controller="MainController as mainController">
         <div class="form-group">
             <div class="input-group">
                 <label class="sr-only" for="search_text">Trabajo</label>
