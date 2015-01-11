@@ -19,21 +19,13 @@
         var vm = this;
 
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
-        navigator.geolocation.getCurrentPosition(location);
+
         vm.search = search;
 
         $scope.$watch('mainController.regionToSearch', function (data) {
         });
 
-        function location(location) {
-            change_center(location.coords.latitude, location.coords.longitude);
 
-//             alert(location.coords.latitude);
-/*
-            alert(location.coords.longitude);
-            alert(location.coords.accuracy);
-*/
-        }
 
         function search() {
             $state.go('jobs', {region: vm.regionToSearch, text: vm.textToSearch});
