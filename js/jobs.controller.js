@@ -19,9 +19,7 @@
         var vm = this;
 
         jobsService.getJobById().success(function (data, status) {
-            if (status == 200) {
-                vm.job = data[0];
-            }
+            vm.job = data[0];
         });
 
         jobsService.getJobsByRegionAndText(vm.region, vm.text, vm.when).success(function (data) {

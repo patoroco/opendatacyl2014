@@ -6,12 +6,14 @@
 
     var api = 'http://178.62.198.195/api/';
 
-    //FIXME maquetar
-    //FIXME llamadas de backend
-    //FIXME estadisticas
+    //FIXME * mapa de cartodb
+    //FIXME * llamadas de backend
+
+    //FIXME * estadisticas
+
+    //FIXME * maquetar
+    //FIXME * emails
     //FIXME dominio
-    //FIXME mapa de cartodb
-    //FIXME emails
 
     function MainController($scope, $state, jobsService) {
         var vm = this;
@@ -57,6 +59,5 @@
             url: '/unsubscribe/:email',
             templateUrl: 'pages/unsubscribe.html'
         });
-        //FIXME baja y resto páginas
     }
 })();
