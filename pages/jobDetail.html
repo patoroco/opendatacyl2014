@@ -1,43 +1,49 @@
-<div class="row" ng-controller="ViewJobController as vm">
-    <div class="col-md-3">
-        <div ng-include src="'pages/sendEmail.html'"></div>
-        <p>Ofertas relacionadas</p>
-        <ul class="list-unstyled" ng-repeat="job in vm.jobs">
-            <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{vm.job.titulo |
-                lowercase}}</a></li>
-        </ul>
-        <p></p>
-    </div>
-    <div class="col-md-9">
-
-        <h4>{{vm.job.titulo}}</h4>
-
-        <a ui-sref="jobs">Volver al mapa de ofertas</a>
-
-        <div class="job-box">
-            <div class="row">
-                <div class="col-md-8">
-                    <h4><a href="#">{{vm.job.titulo | lowercase}}</a></h4>
-                </div>
-                <div class="col-md-2">{{vm.job.localidad | lowercase}}</div>
-                <!-- <div class="col-md-2">{{vm.difficulty}}</div>-->
-            </div>
-            <div class="row">
-                <div class="col-md-2">{{vm.job.jornada | lowercase}}</div>
-                <div class="col-md-4"><label>Oficina de empleo:</label> {{vm.job.oficina_de_empleo_que_gestiona_la_of | lowercase}}
-                </div>
-                <div class="col-md-6"><label>Duracción del contrato:</label> {{vm.job.duracion_del_contrato | lowercase}}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><label>Nivel profesional:</label> {{vm.job.nivel_profesional | lowercase}}</div>
-                <div class="col-md-2"><label>ETT:</label> {{vm.job.empresa_ofertante_es_ett | lowercase}}</div>
-                <div class="col-md-4"><label>Titulación:</label> {{vm.job.titulacion | lowercase}}</div>
-            </div>
-            <div class="row">
-                <div class="col-md-2"><label>Contrato:</label> {{vm.job.contrato | lowercase}}</div>
-                <div class="col-md-2"><label>Identificador:</label> {{vm.job.identificador | lowercase}}</div>
-            </div>
+<div class="container-fluid" ng-controller="ViewJobController as vm">
+    <div class="row">
+        <div class="col-md-3">
+            <div ng-include src="'pages/sendEmail.html'"></div>
+            <p>Ofertas relacionadas</p>
+            <ul class="list-unstyled" ng-repeat="job in vm.jobs">
+                <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{vm.job.titulo |
+                    lowercase}}</a></li>
+            </ul>
+            <p></p>
         </div>
+        <div class="col-md-9">
 
+            <h4>{{vm.job.titulo}}</h4>
+
+            <a ui-sref="jobs">Volver al mapa de ofertas</a>
+
+            <div class="job-box">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4><a href="#">{{vm.job.titulo | lowercase}}</a></h4>
+                    </div>
+                    <div class="col-md-2">{{vm.job.localidad | lowercase}}</div>
+                    <!-- <div class="col-md-2">{{vm.difficulty}}</div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-2">{{vm.job.jornada | lowercase}}</div>
+                    <div class="col-md-4"><label>Oficina de empleo:</label>
+                        {{vm.job.oficina_de_empleo_que_gestiona_la_of | lowercase}}
+                    </div>
+                    <div class="col-md-6"><label>Duracción del contrato:</label> {{vm.job.duracion_del_contrato |
+                        lowercase}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><label>Nivel profesional:</label> {{vm.job.nivel_profesional | lowercase}}
+                    </div>
+                    <div class="col-md-2"><label>ETT:</label> {{vm.job.empresa_ofertante_es_ett | lowercase}}</div>
+                    <div class="col-md-4"><label>Titulación:</label> {{vm.job.titulacion | lowercase}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><label>Contrato:</label> {{vm.job.contrato | lowercase}}</div>
+                    <div class="col-md-2"><label>Identificador:</label> {{vm.job.identificador | lowercase}}</div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

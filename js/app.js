@@ -8,15 +8,17 @@
 
     //FIXME * mapa de cartodb
 
+    //FIXME * llamadas de backend
     //TODO Call To Action
     //TODO allow links in new window
     //TODO revisar maquetacion
 
-    //FIXME * llamadas de backend
+    //FIXME * emails
     //FIXME * estadisticas
 
-    //FIXME * emails
-    //FIXME dominio
+    //TODO dominio
+
+
 
     function MainController($scope, $state, jobsService) {
         var vm = this;
