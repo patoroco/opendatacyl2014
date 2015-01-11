@@ -25,11 +25,13 @@ function init_map() {
 			layers[1].setInteraction(true);
 			layers[1].setInteractivity(['nom_prov']);
 			layers[1].on('featureClick', function(e, latlng, pos, data, subLayerIndex) {
-			  console.log("mouse over polygon with data: " + data.nom_prov);
+				var selected_province = $("#region option").filter(function() {
+					return $(this).text().toLowerCase() == data.nom_prov.toLowerCase();
+				}).text();
 
-			$("#region option").filter(function() {
-				return $(this).text().toLowerCase() == data.nom_prov.toLowerCase();
-			}).attr('selected', 'selected');
+				var model = angular.element($('#region')).scope();
+				model.mainController.regionToSearch = selected_province;
+				model.$apply();
 		});
 	});
 }
