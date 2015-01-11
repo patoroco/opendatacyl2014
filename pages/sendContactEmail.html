@@ -1,14 +1,15 @@
-<div ng-controller="EmailController as emailController">
-    ¿Quieres contactar con nosotros?
+<div ng-controller="EmailController as emailController" class="lateral-form" id="about">
     <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
+        <p>¿Quieres contactar con nosotros?</p>
         <input type="text" ng-model="emailController.name" placeholder="Escribe tu nombre" required>
         <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
         <textarea ng-model="emailController.text" placeholder="Escribe tu mensaje" required></textarea>
         <button type="submit" ng-disabled="form.$invalid" ng-click="emailController.sendContactEmail()"
-                class="btn btn-lg btn-success">Enviar
+                class="btn btn-lg btn-black">Enviar
         </button>
 
         <span class="apuntado">{{emailController.sent}}</span>
         <span class="apuntado">{{emailController.fail}}</span>
+        <p class="border" style="width:250px"></p>
     </form>
 </div>

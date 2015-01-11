@@ -1,14 +1,38 @@
-<div ng-include src="'pages/sendEmail.html'"></div>
-<div ng-controller="JobsController as jobsController">
+<div class="row" ng-controller="JobsController as jobsController">
+    <div class="col-md-3">
+        <div ng-include src="'pages/sendEmail.html'"></div>
+        <div class="radio-with-margin ">
+            <p>Publicado hace:</p>
+            <input type="radio" ng-model="jobsController.when" value="whenever">Cualquiera<br/>
+            <input type="radio" ng-model="jobsController.when" value="day">1 día<br/>
+            <input type="radio" ng-model="jobsController.when" value="week">1 semana<br/>
+            <input type="radio" ng-model="jobsController.when" value="month">1 mes<br/>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h4>35 ofertas encontradas para XXXXXXX</h4>
 
-    Publicado hace:
-    <input type="radio" ng-model="jobsController.when" value="whenever">Cualquiera<br/>
-    <input type="radio" ng-model="jobsController.when" value="day">1 día<br/>
-    <input type="radio" ng-model="jobsController.when" value="week">1 semana<br/>
-    <input type="radio" ng-model="jobsController.when" value="month">1 mes<br/>
+        <div class="border row" style="padding: 20px;margin:15px">
+            <div class="col-md-8">35 ofertas</div>
+            <div class="col-md-2">Dónde y cuando</div>
+            <div class="col-md-2">Dificultad de acceso</div>
+        </div>
 
-    <ul class="list-unstyled" ng-repeat="job in jobsController.jobs">
-        <li><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">(hoy) {{job.titulo | lowercase}} ({{job.provincia |
-            lowercase}})</a></li>
-    </ul>
+        <div ng-repeat="job in jobsController.jobs">
+            <div class="job-box">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">{{job.titulo |
+                            lowercase}}</a></h4>
+                    </div>
+                    <div class="col-md-2">{{job.localidad | lowercase}}</div>
+                    <div class="col-md-2">{{jobsController.difficulty(job)}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">{{job.jornada}}</div>
+                    <div class="col-md-4">{{job.oficina_de_empleo_que_gestiona_la_of}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

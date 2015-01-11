@@ -1,13 +1,39 @@
-<div ng-controller="EmailController as emailController">
-    Darte de baja
-    <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
-        <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
-        <textarea ng-model="emailController.text" placeholder="Cuéntanos por qué quieres darte de baja"></textarea>
-        <button type="submit" ng-disabled="form.$invalid" ng-click="emailController.unsubscribe()"
-                class="btn btn-lg btn-success">Dar de baja
-        </button>
+<div class="row">
+    <div class="col-md-3" ng-controller="ViewJobController as vm">
+        <p>Últimas ofertas</p>
+        <ul class="list-unstyled" ng-repeat="job in vm.jobs">
+            <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{vm.job.titulo |
+                lowercase}}</a></li>
+        </ul>
+        <p></p>
+    </div>
+    <div class="col-md-9" ng-controller="EmailController as emailController">
 
-        <span class="apuntado">{{emailController.sent}}</span>
-        <span class="apuntado">{{emailController.fail}}</span>
-    </form>
+        <form class="form-horizontal"  ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
+            <h4>Baja de emails</h4>
+            <div class="form-group">
+                <label for="email" class="col-md-2 ">Email</label>
+                <div class="col-md-10">
+                    <input type="email" id="email" ng-model="emailController.email" placeholder="Escribe tu email" class="form-control"
+                           required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="text" class="col-md-2 ">Motivo</label>
+                <div class="col-md-10">
+                     <textarea ng-model="emailController.text" id="text" class="form-control"
+                               placeholder="Cuéntanos por qué quieres darte de baja"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" ng-disabled="form.$invalid" ng-click="emailController.unsubscribe()"
+                            class="btn btn-red">Darte de baja
+                    </button>
+                </div>
+            </div>
+            <span class="apuntado">{{emailController.sent}}</span>
+            <span class="apuntado">{{emailController.fail}}</span>
+        </form>
+    </div>
 </div>

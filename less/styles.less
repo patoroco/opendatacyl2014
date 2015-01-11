@@ -25,11 +25,11 @@
   margin-top: -120px;
   text-align: center;
   text-shadow: 1px 1px #000000;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
 #form_search {
-  background-color: @gray;
+  background-color: @dark-gray;
   height: 120px;
   text-align: center;
   padding: 25px 0;
@@ -44,9 +44,18 @@
   }
 }
 
+.btn-black {
+  .button-variant(white, @dark-gray, @dark-gray);
+  .btn-without-border()
+}
+
 .btn-red {
-  width: 120px;
   .button-variant(white, @red, @red);
+  .btn-without-border();
+}
+
+.btn-without-border() {
+  width: 120px;
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   border-radius: 0 !important;
@@ -54,32 +63,88 @@
 
 #content {
   padding: 20px;
+  background-color: @background;
 
-  p {
+  .border {
     padding-bottom: 10px;
     color: #808080;
-    border-bottom: 1px solid @light-gray;
-    a {
-      color: @red;
+    border-bottom: 1px solid @border;
+  }
+  a {
+    color: @red;
+  }
+
+  .lateral-form {
+    display: block;
+
+    .border {
+      padding-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    input, button, textarea {
+      padding: 10px;
+      width: 250px;
     }
   }
+
+  .job-box {
+    background-color: white;
+    border: 1px solid @border;
+    padding: 20px;
+    margin: 15px;
+
+    .row {
+      padding: 5px;
+
+      label {
+        font-weight: bold;
+      }
+    }
+  }
+
+  #about, #unsubscribe {
+    input, button, textarea {
+      margin-top: 10px;
+    }
+  }
+
+  #unsubscribe input, #unsubscribe button {
+    display: block;
+  }
+}
+
+.radio-with-margin input[type=radio] {
+  margin-right: 10px;
 }
 
 footer {
   height: 200px;
-  background-color: @gray;
+  background-color: @dark-gray;
   padding: 15px 50px;
   color: white;
+
   a {
     color: white;
   }
+
   div {
     .vertical-center();
   }
+}
+
+p {
+  font-family: Tahoma, Helvetica, Arial;
+  color: @text
 }
 
 .vertical-center() {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+a:hover, a:visited, a:focus {
+  text-decoration: none;
+  color: @red;
 }

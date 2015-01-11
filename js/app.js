@@ -7,25 +7,24 @@
     var api = 'http://178.62.198.195/api/';
 
     //FIXME * mapa de cartodb
-    //FIXME * llamadas de backend
 
+    //TODO Call To Action
+    //TODO allow links in new window
+    //TODO revisar maquetacion
+
+    //FIXME * llamadas de backend
     //FIXME * estadisticas
 
-    //FIXME * maquetar
     //FIXME * emails
     //FIXME dominio
 
     function MainController($scope, $state, jobsService) {
         var vm = this;
-
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
-
         vm.search = search;
 
         $scope.$watch('mainController.regionToSearch', function (data) {
         });
-
-
 
         function search() {
             $state.go('jobs', {region: vm.regionToSearch, text: vm.textToSearch});

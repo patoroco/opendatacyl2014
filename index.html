@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
     <!-- endbuild -->
 
     <!-- build:js js/opendatacyl.min.js -->
@@ -54,45 +54,48 @@
             relativeUrls: true// whether to adjust url's to be relative
         };
     </script>
-    
+
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
 </head>
 <body onload="init_map()">
-    <div id="header_bar" class="container-fluid"><img src="img/logo.png"></div>
+<div ng-controller="MainController as mainController">
+    <div id="header_bar" class="container-fluid"><a ui-sref="home"> <img src="img/logo.png"></a></div>
     <div id="header_map"></div>
-    <div id="header_call_to_action">ENCUENTRA TRABAJO CERCA DE TÍ</div>
-    <div class="container-fluid">
-        <form id="form_search" class="form-inline" role="form" ng-controller="MainController as mainController">
-        <div class="form-group">
-            <div class="input-group">
-                <label class="sr-only" for="search_text">Trabajo</label>
-                <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?"
-                       ng-model="mainController.textToSearch">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="sr-only" for="region">Provincia</label>
-            <select id="region" class="form-control" ng-options="region for region in mainController.regions"
-                    ng-model="mainController.regionToSearch">
-            </select>
-        </div>
-        <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>
-    </form>
-</div>
-<div class="container-fluid">
-    <div ui-view id="content"></div>
 
-    <footer>
-        <div class="pull-right">
-            <a ui-sref="home">Inicio</a> |
-            <a ui-sref="jobs">ofertas de trabajo</a> |
-            <a ui-sref="evolution">estudio de evolución del empleo</a> |
-            <a ui-sref="unsubscribe">baja</a> |
-            <a ui-sref="about">acerca de cyljob</a> |
-            <img src="img/logo.png"/>
-        </div>
-    </footer>
+    <div id="header_call_to_action" ng-show="mainController.callToAction">ENCUENTRA TRABAJO CERCA DE TÍ</div>
+    <div class="container-fluid" id="form_search">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="sr-only" for="search_text">Trabajo</label>
+                    <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?"
+                           ng-model="mainController.textToSearch">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="region">Provincia</label>
+                <select id="region" class="form-control" ng-options="region for region in mainController.regions"
+                        ng-model="mainController.regionToSearch">
+                </select>
+            </div>
+            <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>
+        </form>
+    </div>
 </div>
+
+<div ui-view id="content" class="container-fluid"></div>
+
+<footer>
+    <div class="pull-right">
+        <a ui-sref="home">Inicio</a> |
+        <a ui-sref="jobs">ofertas de trabajo</a> |
+        <a ui-sref="evolution">estudio de evolución del empleo</a> |
+        <a ui-sref="unsubscribe">baja</a> |
+        <a ui-sref="about">acerca de cyljob</a>
+        <span style="padding:10px"><img src="img/footer_logo.png"/></span>
+    </div>
+</footer>
+
 
 </body>
 </html>

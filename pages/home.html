@@ -1,13 +1,16 @@
 <div class="row" ng-controller="JobsController as jobsController">
     <div class="col-md-6">
         <h3>Últimas ofertas publicadas</h3>
-        <div class="list-unstyled" ng-repeat="job in jobsController.jobs">
-            <p>(hoy) <a ui-sref="jobDetail({id:job.identificador})">{{job.titulo | lowercase}} ({{job.provincia |
+
+        <div ng-repeat="job in jobsController.jobs">
+            <p class="border">(hoy) <a ui-sref="jobDetail({id:job.identificador})">{{job.titulo | lowercase}} ({{job.provincia |
                 lowercase}})</a></p>
         </div>
         <a ui-sref="jobs">listado de últimas ofertas publicadas</a></li>
     </div>
     <div class="col-md-6">
-        <img src="http://placekitten.com/g/750/350" alt="image"/>
+        <a ui-sref="evolution">
+            <img src="img/evolution.jpg" alt="image"/>
+        </a>
     </div>
 </div>
