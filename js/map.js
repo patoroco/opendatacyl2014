@@ -4,7 +4,7 @@ var SQL_API_URL = 'https://jorge.cartodb.com/api/v2/sql';
 var VIZ_URL = 'http://jorge.cartodb.com/api/v2/viz/7966eb1c-998e-11e4-b96f-0e4fddd5de28/viz.json';
 
 function init_map() {
-    cartodb.createVis('map', VIZ_URL)
+    cartodb.createVis('header_map', VIZ_URL)
     .done(function(vis, layers) {
         map = vis.getNativeMap();
     });
