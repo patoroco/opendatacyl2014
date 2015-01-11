@@ -24,6 +24,9 @@
         vm.search = search;
 
         $scope.$watch('mainController.regionToSearch', function (data) {
+            if (data) {
+                center_in_province(data);
+            }
         });
 
         function search() {
