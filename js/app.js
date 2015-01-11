@@ -53,6 +53,9 @@
         }).state('jobDetail', {
             url: '/jobDetail/:id/:text',
             templateUrl: 'pages/jobDetail.html'
+        }).state('unsubscribe', {
+            url: '/unsubscribe/:email',
+            templateUrl: 'pages/unsubscribe.html'
         });
         //FIXME baja y resto páginas
     }

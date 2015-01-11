@@ -8,7 +8,8 @@
     function emailService($http) {
         return {
             sendEmailWithCriteria : sendEmailWithCriteria,
-            sendContactEmail : sendContactEmail
+            sendContactEmail : sendContactEmail,
+            unsubscribe : unsubscribe
         }
 
         function sendEmailWithCriteria(email, region, text) {
@@ -18,6 +19,11 @@
 
         function sendContactEmail(email, name, text) {
             //FIXME enviar a emails
+            return $http.post(api + 'email/');
+        }
+
+        function unsubscribe(email, text) {
+            //FIXME dessuscribir a emails
             return $http.post(api + 'email/');
         }
     }

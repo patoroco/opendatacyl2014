@@ -1,0 +1,13 @@
+<div ng-controller="EmailController as emailController">
+    Darte de baja
+    <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
+        <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
+        <textarea ng-model="emailController.text" placeholder="Cuéntanos por qué quieres darte de baja"></textarea>
+        <button type="submit" ng-disabled="form.$invalid" ng-click="emailController.unsubscribe()"
+                class="btn btn-lg btn-success">Dar de baja
+        </button>
+
+        <span class="apuntado">{{emailController.sent}}</span>
+        <span class="apuntado">{{emailController.fail}}</span>
+    </form>
+</div>
