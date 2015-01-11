@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service'])
+    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service', 'email.controller'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .controller('MainController', ['$scope', '$state', 'jobsService', MainController]);
 
@@ -21,8 +21,6 @@
         vm.regionToSearch = 'Ávila';
         vm.search = search;
 
-
-
         function location(location) {
             //FIXME procesar localización
             /*  alert(location.coords.latitude);
@@ -32,10 +30,6 @@
 
         function search() {
             $state.go('jobs', {region: vm.regionToSearch, text: vm.textToSearch});
-        }
-
-        function treatError(data, status) {
-            $state.go('error');
         }
     }
 
@@ -57,7 +51,7 @@
             url: '/home',
             templateUrl: 'pages/home.html'
         }).state('jobDetail', {
-            url: '/jobDetail/:id',
+            url: '/jobDetail/:id/:text',
             templateUrl: 'pages/jobDetail.html'
         });
         //FIXME baja y resto páginas

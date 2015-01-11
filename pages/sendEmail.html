@@ -1,6 +1,12 @@
-Avísame de ofertas cómo estás:
+<div ng-controller="EmailController as emailController">
+    Avísame de ofertas cómo estás:
+    <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
+        <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
+        <button type="submit" ng-click="emailController.sendEmails()" ng-disabled="form.$invalid"
+                class="btn btn-lg btn-success">Enviar
+        </button>
+        <span class="apuntado">{{emailController.joined}}</span>
+        <span class="apuntado">{{emailController.emailFailed}}</span>
+    </form>
+</div>
 
-<input type="text" ng-model="jobsController.email" placeholder="Escribe tu email">
-<button type="submit"  ng-click="jobsController.sendEmails()" class="btn btn-lg btn-success">Enviar</button>
-<span class="apuntado">{{jobsController.joined}}</span>
-<span class="apuntado">{{jobsController.emailFailed}}</span>

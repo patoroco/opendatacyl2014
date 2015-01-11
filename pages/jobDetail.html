@@ -1,5 +1,10 @@
+<div ng-include src="'pages/sendEmail.html'"></div>
 <div ng-controller="ViewJobController as viewJobController">
-    <div ng-include src="'pages/sendEmail.html'"></div>
+    <div>Ofertas relacionadas
+        <ul class="list-unstyled" ng-repeat="job in viewJobController.jobs">
+            <li><a ui-sref="jobDetail({id:job.identificador, text: viewJobController.text})">{{job.titulo | lowercase}}</a></li>
+        </ul>
+    </div>
     <p></p>
     {{viewJobController.job.duracion_del_contrato}}
     {{viewJobController.job.identificador}}

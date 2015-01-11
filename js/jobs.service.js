@@ -8,19 +8,15 @@
     function jobsService($http, $cacheFactory) {
         //FIXME caché
         return {
-            getAllJobs: getAllJobs,
             getJobsByRegionAndText: getJobsByRegionAndText,
             getJobById: getJobById
-        }
-
-        function getAllJobs() {
-            return $http.get(api + 'jobs/');
         }
 
         function getJobsByRegionAndText(region, text, when) {
             //FIXME tener en cuenta region y when
             //FIXME count
-            var criteria = text ? ('?search_term=' + text) : '';
+            var date = calculateDate(when);
+            var criteria = (region || text || date) ? ('?search_term=' + text) : '';
             //FIXME procesar when (whenever, month, day, week)
             return $http.get(api + 'jobs/' + criteria);
         }
@@ -29,6 +25,20 @@
             //FIXME sólo buscar por id
             //return $http.get(api + 'jobs/' + id);
             return $http.get(api + 'jobs/');
+        }
+
+        function calculateDate(when) {
+            var date = new Date();
+            if (when === 'day') {
+                date.setDate(date.getDate() - 1);
+            } else if (when === 'week') {
+                date.setDate(date.getDate() - 7);
+            } else if (when === 'month') {
+                date.setMonth(date.getMonth() - 1);
+            } else {
+                return null;
+            }
+            return date;
         }
     }
 })();

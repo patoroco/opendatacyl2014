@@ -1,5 +1,6 @@
+<div ng-include src="'pages/sendEmail.html'"></div>
 <div ng-controller="JobsController as jobsController">
-    <div ng-include src="'pages/sendEmail.html'"></div>
+
     Publicado hace:
     <input type="radio" ng-model="jobsController.when" value="whenever">Cualquiera<br/>
     <input type="radio" ng-model="jobsController.when" value="day">1 día<br/>
@@ -7,6 +8,7 @@
     <input type="radio" ng-model="jobsController.when" value="month">1 mes<br/>
 
     <ul class="list-unstyled" ng-repeat="job in jobsController.jobs">
-        <li><a ui-sref="jobDetail({id:job.identificador})">(hoy) {{job.titulo | lowercase}} ({{job.provincia | lowercase}})</a></li>
+        <li><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">(hoy) {{job.titulo | lowercase}} ({{job.provincia |
+            lowercase}})</a></li>
     </ul>
 </div>

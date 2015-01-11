@@ -7,11 +7,17 @@
 
     function emailService($http) {
         return {
-            sendEmailWithCriteria : sendEmailWithCriteria
+            sendEmailWithCriteria : sendEmailWithCriteria,
+            sendContactEmail : sendContactEmail
         }
 
         function sendEmailWithCriteria(email, region, text) {
             //FIXME apuntarme a emails
+            return $http.post(api + 'email/');
+        }
+
+        function sendContactEmail(email, name, text) {
+            //FIXME enviar a emails
             return $http.post(api + 'email/');
         }
     }
