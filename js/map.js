@@ -1,7 +1,6 @@
-var map;
-
 var SQL_API_URL = 'https://jorge.cartodb.com/api/v2/sql';
 var VIZ_URL = 'http://jorge.cartodb.com/api/v2/viz/7966eb1c-998e-11e4-b96f-0e4fddd5de28/viz.json';
+var TILES_URL = 'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png';
 
 var PROVINCE_COORD = {
 	'Ávila': [40.654347222222, -4.6962222222222],
@@ -15,7 +14,52 @@ var PROVINCE_COORD = {
 	'Zamora': [41.75, -6]
 };
 
+var map;
+var grouped_layer;
+var points_layer;
+
+
+
+
+/** MUESTRA LAS CAPAS Y HACE EL SWITCH ENTRE LAS DOS **/
+// FIXME: hay que cambiar automáticamente de una capa a otra dependiendo del zoom.
 function init_map() {
+	map = new L.Map('header_map', {zoom: 7, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
+
+	L.tileLayer(TILES_URL).addTo(map);
+
+	cartodb.createLayer(map, VIZ_URL)
+	.addTo(map)
+	.on('done', function(layer) {
+	    grouped_layer = layer.getSubLayer(1);
+	    points_layer = layer.getSubLayer(2);
+
+		show_grouped_layer();
+	  }).on('error', function() {
+	    //log the error
+	  });
+}
+
+function show_grouped_layer() {
+	grouped_layer.show();
+	points_layer.hide();
+}
+
+function show_points_layer() {
+	grouped_layer.hide();
+	points_layer.show();
+}
+
+
+
+
+
+
+
+
+/** LA PRIMERA VERSIÓN QUE FUNCIONA, PERO FALTAN DE DISTINGUIR LAS CAPAS**/
+
+function init_map2() {
     cartodb.createVis('header_map', VIZ_URL)
         .done(function (vis, layers) {
             map = vis.getNativeMap();
