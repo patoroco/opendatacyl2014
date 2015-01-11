@@ -12,6 +12,8 @@
     //TODO Call To Action
     //TODO allow links in new window
     //TODO revisar maquetacion
+    //TODO paginador
+    //TODO front page
 
     //FIXME * emails
     //FIXME * estadisticas

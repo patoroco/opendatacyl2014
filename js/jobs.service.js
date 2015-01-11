@@ -16,15 +16,15 @@
             //FIXME tener en cuenta region y when
             //FIXME count
             var date = calculateDate(when);
-            var criteria = (region || text || date) ? ('?search_term=' + text) : '';
             //FIXME procesar when (whenever, month, day, week)
-            return $http.get(api + 'jobs/' + criteria);
+            //FIXME results_per_page page
+            return $http.get(api + 'jobs/', {
+                params: {province: region, search_term: text, publish_date: date}
+            });
         }
 
         function getJobById(id) {
-            //FIXME sólo buscar por id
-            //return $http.get(api + 'jobs/' + id);
-            return $http.get(api + 'jobs/');
+            return $http.get(api + 'jobs/' + id);
         }
 
         function calculateDate(when) {
