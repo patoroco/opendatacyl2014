@@ -1,6 +1,6 @@
 <div ng-controller="EmailController as emailController" class="lateral-form" id="about">
     <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
-        <p>¿Quieres contactar con nosotros?</p>
+        <p><b>¿Quieres contactar con nosotros?</b></p>
         <input type="text" ng-model="emailController.name" placeholder="Escribe tu nombre" required>
         <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
         <textarea ng-model="emailController.text" placeholder="Escribe tu mensaje" required></textarea>
@@ -11,6 +11,6 @@
         <p/>
         <p><img src="img/ic_check_green.png" ng-show="emailController.sent">{{emailController.sent}}</p>
         <p>{{emailController.fail}}</p>
-        <p class="border" style="width:250px"></p>
+        <p class="border" style="width:100%"></p>
     </form>
 </div>

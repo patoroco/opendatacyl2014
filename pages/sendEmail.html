@@ -1,6 +1,6 @@
 <div ng-controller="EmailController as emailController" class="lateral-form">
     <form ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
-        <p>Avísame de ofertas cómo éstas:</p>
+        <p><b>Avísame de ofertas cómo éstas:</b></p>
         <input type="email" ng-model="emailController.email" placeholder="Escribe tu email" required>
         <button type="submit" ng-click="emailController.sendEmails()" ng-disabled="form.$invalid"
                 class="btn btn-lg btn-black">Enviar
@@ -8,6 +8,6 @@
         <p/>
         <p><img src="img/ic_check_green.png" ng-show="emailController.sent">{{emailController.sent}}</p>
         <p>{{emailController.fail}}</p>
-        <p class="border" style="width:250px"></p>
+        <p class="border" style="width:100%"></p>
     </form>
 </div>

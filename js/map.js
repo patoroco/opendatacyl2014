@@ -82,7 +82,7 @@ function init_map2() {
 
 function current_position_updated(location) {
 	var new_position = [location.coords.latitude, location.coords.longitude];
-	// map.setView(new_position, map.getZoom(), {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
+	map.setView(new_position, map.getZoom(), {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
 }
 
 function center_in_province(province) {

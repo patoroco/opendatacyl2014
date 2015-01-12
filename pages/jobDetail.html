@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3">
             <div ng-include src="'pages/sendEmail.html'"></div>
-            <p>Ofertas relacionadas</p>
+            <p><b>Ofertas relacionadas:</b></p>
             <ul class="list-unstyled" ng-repeat="job in vm.jobs">
                 <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{job.titulo |
                     lowercase}}</a></li>
@@ -11,14 +11,14 @@
         </div>
         <div class="col-md-9">
 
-            <h4>{{vm.job.titulo}}</h4>
+            <p><b>{{vm.job.titulo}}</b></p>
 
-            <a ui-sref="jobs">Volver al mapa de ofertas</a>
+            <a ui-sref="jobs">« Volver al mapa de ofertas</a>
 
             <div class="job-box">
                 <div class="row">
                     <div class="col-md-8">
-                        <h4><a href="#">{{vm.job.titulo | lowercase}}</a></h4>
+                        <h4><span class="red">{{vm.job.titulo | lowercase}}</span></h4>
                     </div>
                     <div class="col-md-2">{{vm.job.localidad | lowercase}}</div>
                     <!-- <div class="col-md-2">{{vm.difficulty}}</div>-->

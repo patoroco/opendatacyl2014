@@ -1,14 +1,15 @@
 (function () {
     'use strict';
-    angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service'])
-        .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', JobsController])
+    angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service', 'date.service'])
+        .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', 'dateService', JobsController])
         .controller('ViewJobController', ['$scope', '$state', 'jobsService', '$rootScope', ViewJobController]);
 
-    function JobsController($scope, $rootScope, $stateParams, jobsService) {
+    function JobsController($scope, $rootScope, $stateParams, jobsService, dateService) {
         var vm = this;
         vm.when = $stateParams.when || 'whenever';
         vm.difficulty = difficulty;
         vm.showCallToAction = showCallToAction;
+        vm.differenceBetweenDays = dateService.differenceBetweenDays;
         $rootScope.region = $stateParams.region;
         $rootScope.text = $stateParams.text;
 
@@ -49,7 +50,7 @@
             jobsService.getJobsByRegionAndText(region, text).success(function (data) {
                 vm.jobs = [];
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i] != vm.job) {
+                    if (data[i].identificador != vm.job.identificador) {
                         vm.jobs.push(data[i]);
                     }
                 }
@@ -66,12 +67,15 @@
 
     function difficulty(job) {
         if (job.titulacion || job.minusvalia) {
-            return 'Difícil';
+            return ['Difícil', 'red'];
         } else if (job.requisitos_necesarios || job.procedimiento_de_seleccion) {
-            return 'Media';
+            return ['Media', 'orange'];
         } else {
-            return 'Fácil';
+            return ['Fácil', 'green'];
         }
     }
 
+
+
 })();
+

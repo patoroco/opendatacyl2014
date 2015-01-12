@@ -1,20 +1,21 @@
 (function () {
     'use strict';
-    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service', 'email.controller'])
+    angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service', 'email.controller', 'date.service',])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
             $locationProvider.html5Mode(false)
         }])
-        .controller('MainController', ['$scope', '$state', MainController]);
+        .controller('MainController', ['$scope', '$state', 'dateService', MainController]);
 
     var api = 'http://178.62.198.195/api/';
 
     //TODO ui-router y html5mode (allow links in new window)
 
-    function MainController($rootScope, $state) {
+    function MainController($rootScope, $state, dateService) {
         var vm = this;
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
         vm.search = search;
+        vm.differenceBetweenDays = dateService.differenceBetweenDays;
 
         $rootScope.$watch('region', function (data) {
             if (data) {

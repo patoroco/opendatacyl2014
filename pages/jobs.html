@@ -4,7 +4,7 @@
         <div class="col-md-3">
             <div ng-include src="'pages/sendEmail.html'"></div>
             <div class="radio-with-margin ">
-                <p>Publicado hace:</p>
+                <p><b>Publicado hace:</b></p>
                 <input type="radio" ng-model="jobsController.when" value="whenever">Cualquiera<br/>
                 <input type="radio" ng-model="jobsController.when" value="day">1 día<br/>
                 <input type="radio" ng-model="jobsController.when" value="week">1 semana<br/>
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h4>35 ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em> en <em>{{$root.region || 'todas las provincias'}}</em></h4>
+            <p><b>35 ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em> en <em>{{$root.region || 'todas las provincias'}}</em></b></p>
 
             <div class="border row" style="padding: 20px;margin:15px">
                 <div class="col-md-8">35 ofertas</div>
@@ -28,9 +28,10 @@
                                 lowercase}}</a></h4>
                         </div>
                         <div class="col-md-2">{{job.localidad | lowercase}}</div>
-                        <div class="col-md-2">{{jobsController.difficulty(job)}}</div>
+                        <div class="col-md-2"><span class="{{jobsController.difficulty(job)[1]}}">{{jobsController.difficulty(job)[0]}}</span></div>
                     </div>
                     <div class="row">
+                        <div class="col-md-2">{{jobsController.differenceBetweenDays(job.fecha_de_publicacion)}}</div>
                         <div class="col-md-2">{{job.jornada}}</div>
                         <div class="col-md-4">{{job.oficina_de_empleo_que_gestiona_la_of}}</div>
                     </div>
