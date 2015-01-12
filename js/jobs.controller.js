@@ -1,20 +1,22 @@
 (function () {
     'use strict';
     angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service'])
-        .controller('JobsController', ['$scope', '$stateParams', 'jobsService', JobsController])
+        .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', JobsController])
         .controller('ViewJobController', ['$scope', '$state', 'jobsService', ViewJobController]);
 
-    function JobsController($scope, $stateParams, jobsService) {
+    function JobsController($scope, $rootScope, $stateParams, jobsService) {
         var vm = this;
         vm.when = $stateParams.when || 'whenever';
-        vm.text = $stateParams.text;
-        vm.region = $stateParams.region;
         vm.difficulty = difficulty;
+        $rootScope.region = $stateParams.region;
+        $rootScope.text = $stateParams.text;
 
         $scope.$watch('jobsController.when', search);
+        $rootScope.$watch('region', search);
+        $rootScope.$watch('text', search);
 
         function search() {
-            jobsService.getJobsByRegionAndText(vm.region, vm.text, vm.when).success(function (data) {
+            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when).success(function (data) {
                 vm.jobs = data;
             }).error(treatError);
         };

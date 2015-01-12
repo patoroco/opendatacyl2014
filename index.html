@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CYLJOB (OpenDataCyL2014)</title>
+    <base href="/home" />
 
     <!-- build:css css/opendatacyl.css -->
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
@@ -73,13 +74,13 @@
                 <div class="input-group">
                     <label class="sr-only" for="search_text">Trabajo</label>
                     <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?"
-                           ng-model="mainController.textToSearch">
+                           ng-model="$root.text">
                 </div>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="region">Provincia</label>
                 <select id="region" class="form-control" ng-options="region for region in mainController.regions"
-                        ng-model="mainController.regionToSearch">
+                        ng-model="$root.region">
                 </select>
             </div>
             <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>

@@ -2,7 +2,10 @@
     'use strict';
     angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service', 'email.controller'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
-        .controller('MainController', ['$scope', '$state', 'jobsService', MainController]);
+        .config(["$locationProvider", function ($locationProvider) {
+            $locationProvider.html5Mode(true);
+        }])
+        .controller('MainController', ['$scope', '$state', MainController]);
 
     var api = 'http://178.62.198.195/api/';
 
@@ -13,7 +16,6 @@
     //TODO allow links in new window
     //TODO revisar maquetacion
     //TODO paginador
-    //TODO front page
 
     //FIXME * emails
     //FIXME * estadisticas
@@ -21,20 +23,19 @@
     //TODO dominio
 
 
-
-    function MainController($scope, $state, jobsService) {
+    function MainController($rootScope, $state) {
         var vm = this;
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
         vm.search = search;
 
-        $scope.$watch('mainController.regionToSearch', function (data) {
+        $rootScope.$watch('region', function (data) {
             if (data) {
                 center_in_province(data);
             }
         });
 
         function search() {
-            $state.go('jobs', {region: vm.regionToSearch, text: vm.textToSearch});
+            $state.go('jobs', {region: $rootScope.region, text: $rootScope.text});
         }
     }
 
