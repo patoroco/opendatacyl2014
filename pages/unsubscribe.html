@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-md-3" ng-controller="ViewJobController as vm">
+    <div class="col-md-3" ng-controller="JobsController as vm">
         <p>Últimas ofertas</p>
         <ul class="list-unstyled" ng-repeat="job in vm.jobs">
-            <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{vm.job.titulo |
+            <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{job.titulo |
                 lowercase}}</a></li>
         </ul>
         <p></p>

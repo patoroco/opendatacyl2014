@@ -9,20 +9,7 @@
 
     var api = 'http://178.62.198.195/api/';
 
-    //FIXME mapa de cartodb
-    //FIXME emails
-    //FIXME estadisticas
-    //FIXME revisar propiedades de job
-    //FIXME caché
-    //FIXME paginador
-
-    //TODO Call To Action
-    //TODO revisar maquetacion
-    //TODO paginador
-    //TODO dominio
-
     //TODO ui-router y html5mode (allow links in new window)
-
 
     function MainController($rootScope, $state) {
         var vm = this;

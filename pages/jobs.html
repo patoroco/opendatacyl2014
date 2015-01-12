@@ -1,5 +1,6 @@
-<div class="container-fluid" ng-controller="JobsController as jobsController">
+<div class="container-fluid" ng-controller="JobsController as jobsController" ng-init="jobsController.showCallToAction(false)">
     <div class="row">
+        {{jobsController.model}}
         <div class="col-md-3">
             <div ng-include src="'pages/sendEmail.html'"></div>
             <div class="radio-with-margin ">

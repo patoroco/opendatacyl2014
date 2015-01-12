@@ -4,7 +4,7 @@
             <div ng-include src="'pages/sendEmail.html'"></div>
             <p>Ofertas relacionadas</p>
             <ul class="list-unstyled" ng-repeat="job in vm.jobs">
-                <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{vm.job.titulo |
+                <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{job.titulo |
                     lowercase}}</a></li>
             </ul>
             <p></p>

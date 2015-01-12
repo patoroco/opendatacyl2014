@@ -1,11 +1,11 @@
 (function () {
     'use strict';
     angular.module('jobs.service', [])
-        .factory('jobsService', ['$http', '$cacheFactory', jobsService]);
+        .factory('jobsService', ['$http', jobsService]);
 
     var api = 'http://178.62.198.195/api/';
 
-    function jobsService($http, $cacheFactory) {
+    function jobsService($http) {
         return {
             getJobsByRegionAndText: getJobsByRegionAndText,
             getJobById: getJobById
@@ -19,7 +19,7 @@
         }
 
         function getJobById(id) {
-            return $http.get(api + 'jobs/' + id);
+            return $http.get(api + 'jobs/' + id, { cache: true});
         }
 
         function calculateDate(when) {
@@ -31,7 +31,7 @@
             } else if (when === 'month') {
                 date.setMonth(date.getMonth() - 1);
             } else {
-                return null;
+                return undefined;
             }
             return date;
         }
