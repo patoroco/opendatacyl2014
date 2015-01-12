@@ -12,5 +12,6 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, folder));
 });
 
-app.listen(8000);
-console.log("App listening on port 8000");
+app.set('port', (process.env.PORT || 8000))
+app.listen(app.get('port'));
+console.log("App listening on port " + app.get('port'));
