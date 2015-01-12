@@ -2,7 +2,7 @@
     'use strict';
     angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service'])
         .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', JobsController])
-        .controller('ViewJobController', ['$scope', '$state', 'jobsService', ViewJobController]);
+        .controller('ViewJobController', ['$scope', '$state', 'jobsService', '$rootScope', ViewJobController]);
 
     function JobsController($scope, $rootScope, $stateParams, jobsService) {
         var vm = this;
@@ -23,17 +23,15 @@
 
     }
 
-    function ViewJobController($scope, $state, jobsService) {
+    function ViewJobController($scope, $state, jobsService, $rootScope) {
         var vm = this;
         vm.difficulty = difficulty;
 
-        //FIXME revisar propiedades
-
-        jobsService.getJobById($state.params.id).success(function (data, status) {
+        jobsService.getJobById($state.params.id).success(function (data) {
             vm.job = data;
         });
 
-        jobsService.getJobsByRegionAndText(vm.region, vm.text).success(function (data) {
+        jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text).success(function (data) {
             vm.jobs = data;
         }).error(treatError);
     }

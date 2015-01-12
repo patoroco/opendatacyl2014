@@ -5,8 +5,9 @@
         <button type="submit" ng-click="emailController.sendEmails()" ng-disabled="form.$invalid"
                 class="btn btn-lg btn-black">Enviar
         </button>
-        <span class="apuntado">{{emailController.joined}}</span>
-        <span class="apuntado">{{emailController.emailFailed}}</span>
+        <p/>
+        <p><img src="img/ic_check_green.png" ng-show="emailController.sent">{{emailController.sent}}</p>
+        <p>{{emailController.fail}}</p>
         <p class="border" style="width:250px"></p>
     </form>
 </div>

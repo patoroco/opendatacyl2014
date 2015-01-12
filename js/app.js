@@ -3,24 +3,25 @@
     angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service', 'email.controller'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
-            $locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(false)
         }])
         .controller('MainController', ['$scope', '$state', MainController]);
 
     var api = 'http://178.62.198.195/api/';
 
-    //FIXME * mapa de cartodb
+    //FIXME mapa de cartodb
+    //FIXME emails
+    //FIXME estadisticas
+    //FIXME revisar propiedades de job
+    //FIXME caché
+    //FIXME paginador
 
-    //FIXME * llamadas de backend
     //TODO Call To Action
-    //TODO allow links in new window
     //TODO revisar maquetacion
     //TODO paginador
-
-    //FIXME * emails
-    //FIXME * estadisticas
-
     //TODO dominio
+
+    //TODO ui-router y html5mode (allow links in new window)
 
 
     function MainController($rootScope, $state) {

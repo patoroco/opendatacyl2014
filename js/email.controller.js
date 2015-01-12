@@ -1,25 +1,23 @@
 (function () {
     'use strict';
     angular.module('email.controller', ['ui.router', 'ui.bootstrap', 'email.service'])
-        .controller('EmailController', ['$scope', '$stateParams', 'emailService', EmailController]);
+        .controller('EmailController', ['$scope', '$stateParams', 'emailService', '$rootScope', EmailController]);
 
-    function EmailController($scope, $stateParams, emailService) {
+    function EmailController($scope, $stateParams, emailService, $rootScope) {
         var vm = this;
         vm.sendEmails = sendEmails;
         vm.sendContactEmail = sendContactEmail;
         vm.unsubscribe = unsubscribe;
-
         vm.email = $stateParams.email || $scope.email;
-        var text = $stateParams.text || $scope.text;
-        var region = $stateParams.region  || $scope.region;
 
         function sendEmails() {
             if (vm.email) {
-                //FIXME sacar region y texto
+                var text = $rootScope.text;
+                var region = $rootScope.region;
                 emailService.sendEmailWithCriteria(vm.email, region, text).success(function (data, status) {
-                    vm.joined = 'Se ha apuntado a las alertas de nuevas ofertas' + (text ? ' de ' + text : '') + (region ? 'para la provincia ' + region : '');
+                    vm.sent = 'Se ha apuntado a las alertas de nuevas ofertas' + (text ? (' de ' + text) : '') + (region ? (' para la provincia ' + region) : '');
                 }).error(function (data, status) {
-                    vm.emailFailed = 'No se pudo realizar la operación en este momento. Inténtelo más tarde';
+                    vm.fail = 'No se pudo realizar la operación en este momento. Inténtelo más tarde';
                 });
             }
         }

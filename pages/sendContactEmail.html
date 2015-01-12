@@ -8,8 +8,9 @@
                 class="btn btn-lg btn-black">Enviar
         </button>
 
-        <span class="apuntado">{{emailController.sent}}</span>
-        <span class="apuntado">{{emailController.fail}}</span>
+        <p/>
+        <p><img src="img/ic_check_green.png" ng-show="emailController.sent">{{emailController.sent}}</p>
+        <p>{{emailController.fail}}</p>
         <p class="border" style="width:250px"></p>
     </form>
 </div>
