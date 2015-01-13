@@ -10,6 +10,8 @@
         vm.difficulty = difficulty;
         vm.showCallToAction = showCallToAction;
         vm.differenceBetweenDays = dateService.differenceBetweenDays;
+        vm.pageChanged = pageChanged;
+
         $rootScope.region = $stateParams.region;
         $rootScope.text = $stateParams.text;
 
@@ -18,8 +20,12 @@
         $rootScope.$watch('text', updateSearch('text'));
 
         function search() {
-            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when).success(function (data) {
+            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when, vm.currentPage).success(function (data) {
                 vm.jobs = data;
+            }).error(treatError);
+
+            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when).success(function (data) {
+                vm.total = data[0] ? data[0]['total'] : 0;
             }).error(treatError);
         };
 
@@ -29,6 +35,10 @@
                     search();
                 }
             };
+        }
+
+        function pageChanged() {
+            search()
         }
 
         function showCallToAction(show) {

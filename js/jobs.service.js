@@ -11,10 +11,10 @@
             getJobById: getJobById
         }
 
-        function getJobsByRegionAndText(region, text, when) {
+        function getJobsByRegionAndText(region, text, when, page) {
             var date = calculateDate(when);
             return $http.get(api + 'jobs/', {
-                params: {province: region, search_term: text, publish_date: date}
+                params: {province: region, search_term: text, publish_date: date, page: page}
             });
         }
 

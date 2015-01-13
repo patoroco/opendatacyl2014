@@ -1,4 +1,5 @@
-<div class="container-fluid" ng-controller="JobsController as jobsController" ng-init="jobsController.showCallToAction(false)">
+<div class="container-fluid" ng-controller="JobsController as jobsController"
+     ng-init="jobsController.showCallToAction(false)">
     <div class="row">
         {{jobsController.model}}
         <div class="col-md-3">
@@ -12,30 +13,40 @@
             </div>
         </div>
         <div class="col-md-9">
-            <p><b>35 ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em> en <em>{{$root.region || 'todas las provincias'}}</em></b></p>
 
-            <div class="border row" style="padding: 20px;margin:15px">
-                <div class="col-md-8">35 ofertas</div>
+            <div style="padding-left:20px;padding-right:20px">
+                <p><b>{{jobsController.total}} ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em> en <em>{{$root.region
+                    || 'todas las provincias'}}</em></b></p>
+            </div>
+            <div class="border row" style="margin:0px">
+                <div class="col-md-8">{{jobsController.total}} ofertas</div>
                 <div class="col-md-2">Dónde y cuando</div>
                 <div class="col-md-2">Dificultad de acceso</div>
             </div>
-
-            <div ng-repeat="job in jobsController.jobs">
-                <div class="job-box">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h4><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">{{job.titulo |
-                                lowercase}}</a></h4>
+            <div class="row">
+                <div ng-repeat="job in jobsController.jobs">
+                    <div class="job-box">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">{{job.titulo
+                                    |
+                                    lowercase}}</a></h4>
+                            </div>
+                            <div class="col-md-2">{{job.localidad | lowercase}}</div>
+                            <div class="col-md-2"><span class="{{jobsController.difficulty(job)[1]}}">{{jobsController.difficulty(job)[0]}}</span>
+                            </div>
                         </div>
-                        <div class="col-md-2">{{job.localidad | lowercase}}</div>
-                        <div class="col-md-2"><span class="{{jobsController.difficulty(job)[1]}}">{{jobsController.difficulty(job)[0]}}</span></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">{{jobsController.differenceBetweenDays(job.fecha_de_publicacion)}}</div>
-                        <div class="col-md-2">{{job.jornada}}</div>
-                        <div class="col-md-4">{{job.oficina_de_empleo_que_gestiona_la_of}}</div>
+                        <div class="row">
+                            <div class="col-md-2">{{jobsController.differenceBetweenDays(job.fecha_de_publicacion)}}
+                            </div>
+                            <div class="col-md-2">{{job.jornada}}</div>
+                            <div class="col-md-4">{{job.oficina_de_empleo_que_gestiona_la_of}}</div>
+                        </div>
                     </div>
                 </div>
+                <pagination boundary-links="true" total-items="jobsController.total" ng-model="jobsController.currentPage" class="pagination-sm"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" max-size="5" ng-change="jobsController.pageChanged()"
+                            last-text="&raquo;"></pagination>
             </div>
         </div>
     </div>
