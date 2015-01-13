@@ -18,11 +18,6 @@ var map;
 var grouped_layer;
 var points_layer;
 
-
-
-
-/** MUESTRA LAS CAPAS Y HACE EL SWITCH ENTRE LAS DOS **/
-// FIXME: hay que cambiar automáticamente de una capa a otra dependiendo del zoom.
 function init_map() {
 	map = new L.Map('header_map', {zoom: 7, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
 
@@ -35,9 +30,15 @@ function init_map() {
 	    points_layer = layer.getSubLayer(2);
 
 		show_grouped_layer();
-	  }).on('error', function() {
-	    //log the error
 	  });
+
+	map.on('zoomend', function() {
+		if (map.getZoom() > 7) {
+			show_points_layer();
+		} else {
+			show_grouped_layer();
+		}
+	});
 }
 
 function show_grouped_layer() {
@@ -48,36 +49,6 @@ function show_grouped_layer() {
 function show_points_layer() {
 	grouped_layer.hide();
 	points_layer.show();
-}
-
-
-
-
-
-
-
-
-/** LA PRIMERA VERSIÓN QUE FUNCIONA, PERO FALTAN DE DISTINGUIR LAS CAPAS**/
-
-function init_map2() {
-    cartodb.createVis('header_map', VIZ_URL)
-        .done(function (vis, layers) {
-            map = vis.getNativeMap();
-            map.setView(PROVINCE_COORD['Palencia'], 7, {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
-            navigator.geolocation.getCurrentPosition(current_position_updated);
-
-			layers[1].setInteraction(true);
-			layers[1].setInteractivity(['nom_prov']);
-			layers[1].on('featureClick', function(e, latlng, pos, data, subLayerIndex) {
-				var selected_province = $("#region option").filter(function() {
-					return $(this).text().toLowerCase() == data.nom_prov.toLowerCase();
-				}).text();
-
-				var model = angular.element($('#region')).scope();
-				model.mainController.regionToSearch = selected_province;
-				model.$apply();
-		});
-	});
 }
 
 function current_position_updated(location) {
