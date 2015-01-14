@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service', 'date.service'])
-        .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', 'dateService', JobsController])
+        .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', 'dateService', '$state', JobsController])
         .controller('ViewJobController', ['$scope', '$state', 'jobsService', '$rootScope', ViewJobController]);
 
-    function JobsController($scope, $rootScope, $stateParams, jobsService, dateService) {
+    function JobsController($scope, $rootScope, $stateParams, jobsService, dateService, $state) {
         var vm = this;
         vm.when = $stateParams.when || 'whenever';
         vm.difficulty = difficulty;
@@ -44,6 +44,9 @@
         function showCallToAction(show) {
             $rootScope.callToAction = show;
         }
+        function treatError(data, status) {
+            $state.go('error');
+        }
     }
 
     function ViewJobController($scope, $state, jobsService, $rootScope) {
@@ -69,11 +72,13 @@
                 }
             }).error(treatError);
         }
+        function treatError(data, status) {
+            $state.go('error');
+        }
+
     }
 
-    function treatError(data, status) {
-        $state.go('error');
-    }
+
 
     function difficulty(job) {
         if (job.titulacion || job.minusvalia) {

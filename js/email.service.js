@@ -3,7 +3,7 @@
     angular.module('email.service', [])
         .factory('emailService', ['$http', emailService]);
 
-    var api = 'http://178.62.198.195/api/';
+    var api = 'http://cyljob.com/api/';
 
     function emailService($http) {
         return {

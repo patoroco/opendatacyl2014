@@ -3,7 +3,7 @@
     angular.module('jobs.service', [])
         .factory('jobsService', ['$http', jobsService]);
 
-    var api = 'http://178.62.198.195/api/';
+    var api = 'http://cyljob.com/api/';
 
     function jobsService($http) {
         return {
