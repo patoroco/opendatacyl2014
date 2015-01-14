@@ -16,6 +16,7 @@
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-clean": "latest",
     "grunt-contrib-copy": "latest",
+    "grunt-contrib-less" : "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-cssmin": "latest",
     "grunt-ngmin": "latest",

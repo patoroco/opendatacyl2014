@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
     <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
+    <link rel="stylesheet" href="css/less.css">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
     <!-- endbuild -->
 
     <!-- build:js js/opendatacyl.min.js -->
@@ -31,7 +30,6 @@
     <script src="bower_components/nvd3/nv.d3.js"></script>
     <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
     <script src="bower_components/less/dist/less.min.js"></script>
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
     <script src="js/email.controller.js"></script>
     <script src="js/jobs.controller.js"></script>
     <script src="js/jobs.service.js"></script>
@@ -41,6 +39,9 @@
     <script src="js/map.js"></script>
     <!-- endbuild -->
 
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
 
     <script type="text/javascript">
@@ -57,7 +58,6 @@
         };
     </script>
 
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
 </head>
 <body onload="init_map()">
 <div ng-controller="MainController as mainController">

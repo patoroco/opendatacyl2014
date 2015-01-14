@@ -1,0 +1,239 @@
+
+#header_bar {
+  position: absolute;
+  background-color: #c92b26;
+  width: 100%;
+  opacity: 0.9;
+  height: 70px;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+#header_bar a {
+  top: 10px;
+  position: relative;
+}
+#header_map {
+  margin: 0;
+  width: 100%;
+  height: 420px;
+}
+#header_call_to_action {
+  color: white;
+  font-size: 3em;
+  position: relative;
+  margin-top: -120px;
+  text-align: center;
+  text-shadow: 1px 1px #000000;
+  margin-bottom: 70px;
+}
+#form_search {
+  background-color: #444444;
+  height: 120px;
+  text-align: center;
+  padding: 25px 0;
+  margin: 0 auto;
+}
+#form_search input,
+#form_search select {
+  height: 45px;
+  width: 300px !important;
+}
+#form_search form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn-black {
+  color: white;
+  background-color: #444444;
+  border-color: #444444;
+  width: 120px;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+.btn-black:hover,
+.btn-black:focus,
+.btn-black.focus,
+.btn-black:active,
+.btn-black.active,
+.open > .dropdown-toggle.btn-black {
+  color: white;
+  background-color: #2b2b2b;
+  border-color: #252525;
+}
+.btn-black:active,
+.btn-black.active,
+.open > .dropdown-toggle.btn-black {
+  background-image: none;
+}
+.btn-black.disabled,
+.btn-black[disabled],
+fieldset[disabled] .btn-black,
+.btn-black.disabled:hover,
+.btn-black[disabled]:hover,
+fieldset[disabled] .btn-black:hover,
+.btn-black.disabled:focus,
+.btn-black[disabled]:focus,
+fieldset[disabled] .btn-black:focus,
+.btn-black.disabled.focus,
+.btn-black[disabled].focus,
+fieldset[disabled] .btn-black.focus,
+.btn-black.disabled:active,
+.btn-black[disabled]:active,
+fieldset[disabled] .btn-black:active,
+.btn-black.disabled.active,
+.btn-black[disabled].active,
+fieldset[disabled] .btn-black.active {
+  background-color: #444444;
+  border-color: #444444;
+}
+.btn-black .badge {
+  color: #444444;
+  background-color: white;
+}
+.btn-red {
+  color: white;
+  background-color: #c92b26;
+  border-color: #c92b26;
+  width: 120px;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+.btn-red:hover,
+.btn-red:focus,
+.btn-red.focus,
+.btn-red:active,
+.btn-red.active,
+.open > .dropdown-toggle.btn-red {
+  color: white;
+  background-color: #9e221e;
+  border-color: #96201c;
+}
+.btn-red:active,
+.btn-red.active,
+.open > .dropdown-toggle.btn-red {
+  background-image: none;
+}
+.btn-red.disabled,
+.btn-red[disabled],
+fieldset[disabled] .btn-red,
+.btn-red.disabled:hover,
+.btn-red[disabled]:hover,
+fieldset[disabled] .btn-red:hover,
+.btn-red.disabled:focus,
+.btn-red[disabled]:focus,
+fieldset[disabled] .btn-red:focus,
+.btn-red.disabled.focus,
+.btn-red[disabled].focus,
+fieldset[disabled] .btn-red.focus,
+.btn-red.disabled:active,
+.btn-red[disabled]:active,
+fieldset[disabled] .btn-red:active,
+.btn-red.disabled.active,
+.btn-red[disabled].active,
+fieldset[disabled] .btn-red.active {
+  background-color: #c92b26;
+  border-color: #c92b26;
+}
+.btn-red .badge {
+  color: #c92b26;
+  background-color: white;
+}
+#content {
+  background-color: #f8f8f8;
+}
+#content .row {
+  padding: 20px;
+}
+#content .border {
+  padding-bottom: 10px;
+  color: #808080;
+  border-bottom: 1px solid #eeeeee;
+}
+#content a {
+  color: #c92b26;
+}
+#content .lateral-form {
+  display: block;
+}
+#content .lateral-form .border {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+#content .lateral-form input,
+#content .lateral-form button,
+#content .lateral-form textarea {
+  padding: 10px;
+  width: 100%;
+}
+#content .job-box {
+  background-color: white;
+  border: 1px solid #eeeeee;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+#content .job-box .row {
+  padding: 5px;
+}
+#content .job-box .row label {
+  font-weight: bold;
+}
+#content #about input,
+#content #unsubscribe input,
+#content #about button,
+#content #unsubscribe button,
+#content #about textarea,
+#content #unsubscribe textarea {
+  margin-top: 10px;
+}
+#content #unsubscribe input,
+#content #unsubscribe button {
+  display: block;
+}
+#content #evolution {
+  background-color: #444444;
+  color: white;
+}
+.radio-with-margin input[type=radio] {
+  margin-right: 10px;
+}
+footer {
+  height: 200px;
+  background-color: #444444;
+  padding: 15px 50px;
+  color: white;
+}
+footer a {
+  color: white;
+}
+footer div {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+p {
+  font-family: Tahoma, Helvetica, Arial;
+  color: #888888;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #c92b26;
+}
+footer a:visited {
+  text-decoration: none;
+  color: white;
+}
+.red {
+  color: #c92b26;
+}
+.green {
+  color: #ff7f00;
+}
+.green {
+  color: #228c00;
+}
+

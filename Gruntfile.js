@@ -5,6 +5,13 @@ module.exports = function (grunt) {
 
         clean: ["dist"],
 
+        less: {
+            production: {
+                files: {
+                    "css/less.css": "less/*.less"
+                }
+            }
+        },
         copy: {
             main: {
                 src: 'index.html',
@@ -36,6 +43,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -43,7 +51,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', [
-        'copy', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'usemin'
-    ]);
+
+    grunt.registerTask('default', ['less', 'copy', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'usemin']);
 };
