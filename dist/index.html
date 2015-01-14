@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="opendatacyl2014">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CYLJOB (OpenDataCyL2014)</title>
+    <!-- <base href="/home" />-->
+
+    <link rel="stylesheet" href="css/opendatacyl.css">
+
+    <script src="js/opendatacyl.min.js"></script>
+
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+
+    <script type="text/javascript">
+        // Replace that on final version with CSS compiled version
+        less = {
+            env: "development", // or "production"
+            async: true,       // load imports async
+            fileAsync: false,   // load imports async when in a page under
+                                // a file protocol
+            poll: 1000,         // when in watch mode, time in ms between polls
+            functions: {},      // user functions, keyed by name
+            dumpLineNumbers: "comments", // or "mediaquery" or "all"
+            relativeUrls: true// whether to adjust url's to be relative
+        };
+    </script>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
+</head>
+<body onload="init_map()">
+<div ng-controller="MainController as mainController">
+    <div id="header_bar" class="container-fluid"><a ui-sref="home"> <img src="img/logo.png"></a></div>
+    <div id="header_map"></div>
+    <div id="header_call_to_action" ng-show="$root.callToAction">ENCUENTRA TRABAJO CERCA DE TÍ</div>
+    <div class="container-fluid" id="form_search">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="sr-only" for="search_text">Trabajo</label>
+                    <input type="text" class="form-control" id="search_text" placeholder="¿Qué trabajo buscas?"
+                           ng-model="$root.text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="region">Provincia</label>
+                <select id="region" class="form-control" ng-options="region for region in mainController.regions"
+                        ng-model="$root.region" >
+                </select>
+            </div>
+            <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<div ui-view id="content"></div>
+
+<footer>
+    <div class="pull-right">
+        <a ui-sref="home">Inicio</a> |
+        <a ui-sref="jobs">ofertas de trabajo</a> |
+        <a ui-sref="evolution">estudio de evolución del empleo</a> |
+        <a ui-sref="unsubscribe">baja</a> |
+        <a ui-sref="about">acerca de cyljob</a>
+        <span style="padding:10px"><img src="img/footer_logo.png"/></span>
+    </div>
+</footer>
+
+
+</body>
+</html>
