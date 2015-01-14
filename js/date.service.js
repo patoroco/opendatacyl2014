@@ -3,8 +3,6 @@
     angular.module('date.service', [])
         .factory('dateService', [dateService]);
 
-    var api = 'http://178.62.198.195/api/';
-
     function dateService() {
         return {
             differenceBetweenDays: differenceBetweenDays

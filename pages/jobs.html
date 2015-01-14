@@ -30,17 +30,19 @@
                             <div class="col-md-8">
                                 <h4><a ui-sref="jobDetail({id:job.identificador, text: jobsController.text})">{{job.titulo
                                     |
-                                    lowercase}}</a></h4>
+                                    capitalize}}</a></h4>
                             </div>
-                            <div class="col-md-2">{{job.localidad | lowercase}}</div>
+                            <div class="col-md-2">{{job.localidad | capitalize}}</div>
                             <div class="col-md-2"><span class="{{jobsController.difficulty(job)[1]}}">{{jobsController.difficulty(job)[0]}}</span>
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-8">{{job.nivel_profesional | capitalize}}
+                            </div>
                             <div class="col-md-2">{{jobsController.differenceBetweenDays(job.fecha_de_publicacion)}}
                             </div>
-                            <div class="col-md-2">{{job.jornada}}</div>
-                            <div class="col-md-4">{{job.oficina_de_empleo_que_gestiona_la_of}}</div>
+                            <div class="col-md-2">{{job.jornada | capitalize}}</div>
+
                         </div>
                     </div>
                 </div>

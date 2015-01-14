@@ -12,7 +12,7 @@
   z-index: 1000;
   a {
     top: 10px;
-    position:relative;
+    position: relative;
   }
 }
 
@@ -73,7 +73,7 @@
   background-color: @background;
 
   .border {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     color: #808080;
     border-bottom: 1px solid @border;
   }
@@ -110,7 +110,7 @@
     }
   }
 
-  #about, #unsubscribe {
+  .lateral-form, #unsubscribe {
     input, button, textarea {
       margin-top: 10px;
     }
@@ -160,9 +160,14 @@ a:hover, a:focus {
   text-decoration: none;
   color: @red;
 }
+
 footer a:visited {
   text-decoration: none;
   color: white;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: @border;
 }
 
 .red {

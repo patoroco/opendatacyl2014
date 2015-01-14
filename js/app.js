@@ -5,7 +5,11 @@
         .config(["$locationProvider", function ($locationProvider) {
             $locationProvider.html5Mode(false)
         }])
-        .controller('MainController', ['$scope', '$state', 'dateService', MainController]);
+        .controller('MainController', ['$scope', '$state', 'dateService', MainController]).filter('capitalize', function () {
+            return function (input, all) {
+                return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+            }
+        });
 
     var api = 'http://178.62.198.195/api/';
 

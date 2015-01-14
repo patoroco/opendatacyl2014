@@ -3,12 +3,15 @@
         <p><b>Últimas ofertas:</b></p>
         <ul class="list-unstyled" ng-repeat="job in vm.jobs">
             <li><a ui-sref="jobDetail({id:job.identificador, text: text})">{{job.titulo |
-                lowercase}}</a></li>
+                capitalize}}</a></li>
         </ul>
         <p></p>
     </div>
     <div class="col-md-9" ng-controller="EmailController as emailController">
-        <div class="job-box">
+        <p><b>Baja de emails</b></p>
+        <a ui-sref="home">« Volver a la página principal</a>
+
+        <div class="job-box" style="margin-top:20px">
             <form class="form-horizontal"
                   ng-class="{'has-error': form.name.$invalid, 'has-success': !form.name.$invalid}" name="form">
                 <p><b>Baja de emails</b></p>

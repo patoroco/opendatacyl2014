@@ -1,17 +1,22 @@
 <div class="container-fluid" ng-controller="JobsController as jobsController"
      ng-init="jobsController.showCallToAction(true)">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5 col-md-offset-1">
             <p><b>Últimas ofertas publicadas</b></p>
 
-            <div ng-repeat="job in jobsController.jobs">
-                <p class="border">{{job.fecha_de_publicacion ? '(' +
-                    jobsController.differenceBetweenDays(job.fecha_de_publicacion) + ')' : ''}} <a
-                            ui-sref="jobDetail({id:job.identificador})">{{job.titulo | lowercase}}
+            <div class="row border" ng-repeat="job in jobsController.jobs">
+                <div class="col-md-3">
+                    {{job.fecha_de_publicacion ? '(' +
+                    jobsController.differenceBetweenDays(job.fecha_de_publicacion) + ')' : ''}}
+                </div>
+                <div class="col-md-9">
+                    <a
+                            ui-sref="jobDetail({id:job.identificador})">{{job.titulo | capitalize}}
                         ({{job.provincia |
-                        lowercase}})</a></p>
+                        lowercase}})</a>
+                </div>
             </div>
-            <a ui-sref="jobs">listado de últimas ofertas publicadas</a></li>
+            <a ui-sref="jobs" class="pull-right">listado de últimas ofertas publicadas</a></li>
         </div>
         <div class="col-md-6">
             <a ui-sref="evolution">

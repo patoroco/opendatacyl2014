@@ -2,7 +2,7 @@
     'use strict';
     angular.module('jobs.controller', ['ui.router', 'ui.bootstrap', 'jobs.service', 'date.service'])
         .controller('JobsController', ['$scope', '$rootScope', '$stateParams', 'jobsService', 'dateService', '$state', JobsController])
-        .controller('ViewJobController', ['$scope', '$state', 'jobsService', '$rootScope', ViewJobController]);
+        .controller('ViewJobController', ['$scope', '$state', 'jobsService', '$rootScope', '$sce', ViewJobController]);
 
     function JobsController($scope, $rootScope, $stateParams, jobsService, dateService, $state) {
         var vm = this;
@@ -19,8 +19,10 @@
         $rootScope.$watch('region', updateSearch('region'));
         $rootScope.$watch('text', updateSearch('text'));
 
+
         function search() {
-            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when, vm.currentPage).success(function (data) {
+            var page = vm.currentPage ? (vm.currentPage - 1) * 10 : 0;
+            jobsService.getJobsByRegionAndText($rootScope.region, $rootScope.text, vm.when, page).success(function (data) {
                 vm.jobs = data;
             }).error(treatError);
 
@@ -41,20 +43,24 @@
             search()
         }
 
-        function showCallToAction(show) {
-            $rootScope.callToAction = show;
+        function showCallToAction(home) {
+            $rootScope.callToAction = home;
+            vm.when = home ? 'week' : 'whenever';
         }
+
         function treatError(data, status) {
             $state.go('error');
         }
     }
 
-    function ViewJobController($scope, $state, jobsService, $rootScope) {
+    function ViewJobController($scope, $state, jobsService, $rootScope, $sce) {
         var vm = this;
-        vm.difficulty = difficulty;
+        vm.viewDifficulty = viewDifficulty;
 
         jobsService.getJobById($state.params.id).success(function (data) {
             vm.job = data;
+            vm.job.descripcion =
+                $sce.trustAsHtml(vm.job.descripcion);
 
             searchByRegionAndText(data.provincia.toLowerCase(), data.titulo.toLowerCase());
         });
@@ -72,24 +78,29 @@
                 }
             }).error(treatError);
         }
+
         function treatError(data, status) {
             $state.go('error');
         }
 
-    }
+        function viewDifficulty() {
+            return difficulty(vm.job);
+        }
 
+    }
 
 
     function difficulty(job) {
-        if (job.titulacion || job.minusvalia) {
-            return ['Difícil', 'red'];
-        } else if (job.requisitos_necesarios || job.procedimiento_de_seleccion) {
-            return ['Media', 'orange'];
-        } else {
-            return ['Fácil', 'green'];
+        if (job) {
+            if (job.titulacion || job.minusvalia) {
+                return ['Difícil', 'red'];
+            } else if (job.requisitos_necesarios || job.procedimiento_de_seleccion) {
+                return ['Media', 'orange'];
+            } else {
+                return ['Fácil', 'green'];
+            }
         }
     }
-
 
 
 })();

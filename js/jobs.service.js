@@ -1,11 +1,15 @@
 (function () {
     'use strict';
     angular.module('jobs.service', [])
-        .factory('jobsService', ['$http', jobsService]);
+        .factory('jobsService', ['$http','$location', jobsService]);
 
-    var api = 'http://cyljob.com/api/';
 
-    function jobsService($http) {
+
+    function jobsService($http, $location) {
+
+        var host = $location.host().indexOf('cyljob.es') != -1 ? 'cyljob.es' : 'cyljob.com';
+        var api = 'http://' + host + '/api/';
+
         return {
             getJobsByRegionAndText: getJobsByRegionAndText,
             getJobById: getJobById
