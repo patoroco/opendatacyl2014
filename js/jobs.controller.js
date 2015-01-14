@@ -62,7 +62,7 @@
             vm.job.descripcion =
                 $sce.trustAsHtml(vm.job.descripcion);
 
-            searchByRegionAndText(data.provincia.toLowerCase(), data.titulo.toLowerCase());
+            searchByRegionAndText(data.provincia ? data.provincia.toLowerCase() : '', data.titulo.toLowerCase());
         });
 
         function searchByRegionAndText(region, text) {

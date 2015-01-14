@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css"/>
     <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-   <!-- <link rel="stylesheet" href="css/less.css">-->
+    <link rel="stylesheet" href="bower_components/angular-slider/slider.css"/>
     <link rel="stylesheet" href="css/app.css">
     <!-- endbuild -->
 
@@ -29,9 +29,11 @@
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/nvd3/nv.d3.js"></script>
     <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <script src="bower_components/angular-slider/slider.js"></script>
 
     <script src="js/email.controller.js"></script>
     <script src="js/jobs.controller.js"></script>
+    <script src="js/evolution.controller.js"></script>
     <script src="js/jobs.service.js"></script>
     <script src="js/email.service.js"></script>
     <script src="js/date.service.js"></script>
@@ -40,7 +42,8 @@
     <!-- endbuild -->
 
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+
     <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
     <script src="bower_components/less/dist/less.min.js"></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
@@ -77,7 +80,7 @@
             <div class="form-group">
                 <label class="sr-only" for="region">Provincia</label>
                 <select id="region" class="form-control" ng-options="region for region in mainController.regions"
-                        ng-model="$root.region" >
+                        ng-model="$root.region">
                 </select>
             </div>
             <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>

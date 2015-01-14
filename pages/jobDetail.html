@@ -86,6 +86,14 @@
                         {{controller.job.fuente_contenido | lowercase}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6"><label>Datos de origen:</label>
+                        {{controller.job.oficina_de_empleo_que_gestiona_la_of ? 'Ecyl' : (controller.job.clasificador ?  'empleo público' : 'ofertas de empleo')}}
+                    </div>
+                    <div class="col-md-6" ng-show="controller.job.tipo"><label>Tipo:</label>
+                        {{controller.job.tipo | lowercase}}
+                    </div>
+                </div>
                 <div class="row" ng-show="controller.job.empresa_ofertante_es_ett || controller.job.minusvalia">
                     <div class="col-md-6" ng-show="controller.job.empresa_ofertante_es_ett">{{controller.job.empresa_ofertante_es_ett
                         === 'N' ? '' : 'ETT'}}

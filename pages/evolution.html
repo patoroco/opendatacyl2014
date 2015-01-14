@@ -1,10 +1,17 @@
-<div id="evolution" class="container-fluid">
+<div id="evolution" class="container-fluid" ng-controller="EvolutionController as evolution">
+
+
     <div class="row">
         <div style="text-align:center">
             <img src="img/ic_study.png">
 
             <h3>Estudio sobre la evolución del empleo en Castilla y León</h3>
         </div>
+        {{evolution.date}}
+        <div style="">
+            <slider floor="0" ceiling="{{evolution.dates.length}}" step="1" ng-model="evolution.value"></slider>
+        </div>
+        <div id="unemployment_map"></div>
         <div class="col-md-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra sit amet sem ut
             mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam rhoncus
             ultrices euismod. Mauris at libero vitae nulla tincidunt porttitor id ut lectus. Vestibulum nec mauris eros.
