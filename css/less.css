@@ -149,7 +149,7 @@ fieldset[disabled] .btn-red.active {
   padding: 20px;
 }
 #content .border {
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   color: #808080;
   border-bottom: 1px solid #eeeeee;
 }
@@ -181,11 +181,11 @@ fieldset[disabled] .btn-red.active {
 #content .job-box .row label {
   font-weight: bold;
 }
-#content #about input,
+#content .lateral-form input,
 #content #unsubscribe input,
-#content #about button,
+#content .lateral-form button,
 #content #unsubscribe button,
-#content #about textarea,
+#content .lateral-form textarea,
 #content #unsubscribe textarea {
   margin-top: 10px;
 }
@@ -226,6 +226,14 @@ a:focus {
 footer a:visited {
   text-decoration: none;
   color: white;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #eeeeee;
 }
 .red {
   color: #c92b26;
