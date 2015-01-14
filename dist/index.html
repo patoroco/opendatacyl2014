@@ -12,7 +12,8 @@
     <script src="js/opendatacyl.min.js"></script>
 
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
+
     <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
     <script src="bower_components/less/dist/less.min.js"></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
@@ -49,7 +50,7 @@
             <div class="form-group">
                 <label class="sr-only" for="region">Provincia</label>
                 <select id="region" class="form-control" ng-options="region for region in mainController.regions"
-                        ng-model="$root.region" >
+                        ng-model="$root.region">
                 </select>
             </div>
             <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>
