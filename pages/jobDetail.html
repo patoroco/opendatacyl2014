@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6"><label><a href="{{controller.job.enlace_al_contenido}}">Enlace a la oferta</a></label>
+                    <div class="col-md-6" nh-show="controller.job.enlace_al_contenido"><label><a href="{{controller.job.enlace_al_contenido}}">Enlace a la oferta</a></label>
                     </div>
                     <div class="col-md-6"><label>Id:</label> {{controller.job.identificador | lowercase}}</div>
                 </div>
