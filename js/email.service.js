@@ -5,7 +5,7 @@
 
     function emailService($http, hostsService) {
 
-        var host = hostsService.getHost();
+        var host = hostsService.getDomain();
         var api = 'http://' + host + '/api/';
 
         return {

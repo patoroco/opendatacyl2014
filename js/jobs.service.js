@@ -11,18 +11,15 @@
             getJobById: getJobById
         }
 
-        var host = hostsService.getHost();
-        var api = 'http://' + host + '/api/';
-
         function getJobsByRegionAndText(region, text, when, page) {
             var date = calculateDate(when);
-            return $http.get(api + 'jobs/', {
+            return $http.get(hostsService.getDomain() + 'jobs/', {
                 params: {province: region, search_term: text, publish_date: date, page: page}
             });
         }
 
         function getJobById(id) {
-            return $http.get(api + 'jobs/' + id, {cache: true});
+            return $http.get(hostsService.getDomain() + 'jobs/' + id, {cache: true});
         }
 
         function calculateDate(when) {

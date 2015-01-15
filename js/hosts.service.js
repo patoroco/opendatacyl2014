@@ -5,13 +5,12 @@
 
     function hostsService($location) {
         return {
-            getHost: getHost
+            getDomain: getDomain
         }
 
-        function getHost() {
+        function getDomain() {
             var url = $location.host();
-            var www = url.indexOf('www') != -1 ? 'www' : '';
-            return www + url.indexOf('cyljob.es') != -1 ? 'cyljob.es' : 'cyljob.com';
+            return url.indexOf('localhost') != -1 ? 'http://cyljob.com/api/' : '/api/';
         }
 
     }
