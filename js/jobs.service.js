@@ -1,19 +1,18 @@
 (function () {
     'use strict';
     angular.module('jobs.service', [])
-        .factory('jobsService', ['$http','$location', jobsService]);
+        .factory('jobsService', ['$http', 'hostsService', jobsService]);
 
 
-
-    function jobsService($http, $location) {
-
-        var host = $location.host().indexOf('cyljob.es') != -1 ? 'cyljob.es' : 'cyljob.com';
-        var api = 'http://' + host + '/api/';
+    function jobsService($http, hostsService) {
 
         return {
             getJobsByRegionAndText: getJobsByRegionAndText,
             getJobById: getJobById
         }
+
+        var host = hostsService.getHost();
+        var api = 'http://' + host + '/api/';
 
         function getJobsByRegionAndText(region, text, when, page) {
             var date = calculateDate(when);
@@ -23,7 +22,7 @@
         }
 
         function getJobById(id) {
-            return $http.get(api + 'jobs/' + id, { cache: true});
+            return $http.get(api + 'jobs/' + id, {cache: true});
         }
 
         function calculateDate(when) {

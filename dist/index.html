@@ -37,7 +37,7 @@
     <div id="header_bar" class="container-fluid"><a ui-sref="home"> <img src="img/logo.png"></a></div>
     <div id="header_map"></div>
     <div id="header_call_to_action" ng-show="$root.callToAction">ENCUENTRA TRABAJO CERCA DE TÍ</div>
-    <div class="container-fluid" id="form_search">
+    <div class="container-fluid" id="form_search" ng-hide="$root.evolution">
         <form class="form-inline" role="form">
             <div class="form-group">
                 <div class="input-group">
@@ -50,6 +50,7 @@
                 <label class="sr-only" for="region">Provincia</label>
                 <select id="region" class="form-control" ng-options="region for region in mainController.regions"
                         ng-model="$root.region">
+                    <option value="">Seleccione una provincia</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>

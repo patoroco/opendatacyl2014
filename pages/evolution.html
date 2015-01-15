@@ -1,88 +1,30 @@
 <div id="evolution" class="container-fluid" ng-controller="EvolutionController as evolution">
 
-
     <div class="row">
-        <div style="text-align:center">
+        <div style="text-align:center; padding-top:40px">
             <img src="img/ic_study.png">
 
             <h3>Estudio sobre la evolución del empleo en Castilla y León</h3>
         </div>
-        {{evolution.date}}
-        <div style="">
-            <slider floor="0" ceiling="{{evolution.dates.length}}" step="1" ng-model="evolution.value"></slider>
+
+        <div class="col-md-6">
+            <div id="unemployment_map"></div>
+            <div style="background-color:white; width:100%; padding:20px">
+                <span style="color:black;">Paro a fecha: {{evolution.date}}</span>
+                <slider floor="0" ceiling="{{evolution.dates.length-1}}" step="1" ng-model="evolution.value"
+                        style="width:99%"></slider>
+                <button class="btn btn-lg btn-red" style="width:200px" ng-click="evolution.enableAnimation()">Empezar animación</button>
+                <button class="btn btn-lg btn-black" style="width:200px" ng-click="evolution.disableAnimation()">Parar animación</button>
+            </div>
         </div>
-        <div id="unemployment_map"></div>
-        <div class="col-md-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra sit amet sem ut
-            mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam rhoncus
-            ultrices euismod. Mauris at libero vitae nulla tincidunt porttitor id ut lectus. Vestibulum nec mauris eros.
-            In aliquam lectus eu neque euismod maximus. Nunc libero est, rutrum id purus quis, pretium tempus diam.
-            Nulla at ullamcorper arcu, at semper diam. Donec lacinia viverra dignissim. In non porta lectus. In
-            elementum mi eu sem feugiat iaculis.
+        <div class="col-md-6">
+            Paro a fecha: {{evolution.date}}
+            <div ng-repeat="nojobs in evolution.unemployments.rows | orderBy: 'provincia'">
 
-            Morbi laoreet ipsum vel nulla commodo, non fringilla nisl blandit. Integer ac luctus metus. Phasellus a nisl
-            non ipsum condimentum ullamcorper nec quis nisl. Nulla mattis lacus et auctor placerat. Phasellus vehicula
-            ante sapien. Cras tincidunt augue risus, id lacinia turpis aliquet vel. Nulla pulvinar libero sit amet
-            tellus aliquam accumsan. Nulla aliquam turpis vel enim ullamcorper sollicitudin. Cras non odio ornare nisl
-            vestibulum imperdiet id nec mauris. Integer ultricies lacus elementum, ornare leo non, porta tortor. Nulla
-            tempor, massa ac dignissim iaculis, metus eros molestie turpis, non efficitur lorem neque in libero. Quisque
-            eu facilisis lacus.
+                <p>{{nojobs.provincia}} : {{nojobs.paro_truncado}}%</p>
 
-            Nunc eu lorem in augue faucibus vulputate. Nullam vel ipsum sem. Aenean sed cursus neque. Aliquam ac ante a
-            nisi malesuada elementum eget at nisi. Donec a tempor est. Class aptent taciti sociosqu ad litora torquent
-            per conubia nostra, per inceptos himenaeos. Aliquam sit amet tortor magna. Maecenas tempus nisl at elit
-            dapibus, ac tincidunt velit dictum.
 
-            Nunc eros mauris, consectetur et pellentesque at, lacinia nec arcu. Vestibulum aliquam, libero eget placerat
-            sagittis, est libero ultricies magna, et fermentum mauris augue sit amet sem. Proin egestas tempus ligula eu
-            pulvinar. Nunc ac mi rutrum, posuere purus sit amet, lacinia dui. Phasellus porttitor turpis odio, id
-            pellentesque tellus fermentum sed. Proin consectetur at neque id consequat. Proin in condimentum metus.
-            Aliquam erat volutpat. Maecenas eu metus tincidunt, egestas massa nec, malesuada neque. Aliquam tincidunt
-            ipsum at nunc hendrerit finibus. Cras sagittis augue nec urna convallis sollicitudin. In quis tristique
-            metus.
-
-            Cras vitae tempus leo, vel tincidunt massa. Aliquam dictum varius urna, vel imperdiet tellus scelerisque
-            vel. Nam malesuada feugiat viverra. Proin pharetra dolor hendrerit mi auctor ultricies. Quisque iaculis quam
-            nec mauris sollicitudin, non cursus nunc porttitor. Aenean eget luctus nisl, non commodo mauris. Aliquam
-            pharetra tristique sagittis. Donec malesuada ullamcorper sem eu consectetur. Duis eget placerat orci, id
-            interdum est. Quisque pretium diam quis urna lobortis, non consectetur dui bibendum. Suspendisse dignissim
-            nisl sapien, sit amet hendrerit mi interdum at. Aenean cursus eros eget ex congue, eu facilisis purus
-            porttitor. Cras blandit turpis sed dui eleifend efficitur non eu quam.
-        </div>
-        <div class="col-md-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra sit amet sem ut
-            mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam rhoncus
-            ultrices euismod. Mauris at libero vitae nulla tincidunt porttitor id ut lectus. Vestibulum nec mauris eros.
-            In aliquam lectus eu neque euismod maximus. Nunc libero est, rutrum id purus quis, pretium tempus diam.
-            Nulla at ullamcorper arcu, at semper diam. Donec lacinia viverra dignissim. In non porta lectus. In
-            elementum mi eu sem feugiat iaculis.
-
-            Morbi laoreet ipsum vel nulla commodo, non fringilla nisl blandit. Integer ac luctus metus. Phasellus a nisl
-            non ipsum condimentum ullamcorper nec quis nisl. Nulla mattis lacus et auctor placerat. Phasellus vehicula
-            ante sapien. Cras tincidunt augue risus, id lacinia turpis aliquet vel. Nulla pulvinar libero sit amet
-            tellus aliquam accumsan. Nulla aliquam turpis vel enim ullamcorper sollicitudin. Cras non odio ornare nisl
-            vestibulum imperdiet id nec mauris. Integer ultricies lacus elementum, ornare leo non, porta tortor. Nulla
-            tempor, massa ac dignissim iaculis, metus eros molestie turpis, non efficitur lorem neque in libero. Quisque
-            eu facilisis lacus.
-
-            Nunc eu lorem in augue faucibus vulputate. Nullam vel ipsum sem. Aenean sed cursus neque. Aliquam ac ante a
-            nisi malesuada elementum eget at nisi. Donec a tempor est. Class aptent taciti sociosqu ad litora torquent
-            per conubia nostra, per inceptos himenaeos. Aliquam sit amet tortor magna. Maecenas tempus nisl at elit
-            dapibus, ac tincidunt velit dictum.
-
-            Nunc eros mauris, consectetur et pellentesque at, lacinia nec arcu. Vestibulum aliquam, libero eget placerat
-            sagittis, est libero ultricies magna, et fermentum mauris augue sit amet sem. Proin egestas tempus ligula eu
-            pulvinar. Nunc ac mi rutrum, posuere purus sit amet, lacinia dui. Phasellus porttitor turpis odio, id
-            pellentesque tellus fermentum sed. Proin consectetur at neque id consequat. Proin in condimentum metus.
-            Aliquam erat volutpat. Maecenas eu metus tincidunt, egestas massa nec, malesuada neque. Aliquam tincidunt
-            ipsum at nunc hendrerit finibus. Cras sagittis augue nec urna convallis sollicitudin. In quis tristique
-            metus.
-
-            Cras vitae tempus leo, vel tincidunt massa. Aliquam dictum varius urna, vel imperdiet tellus scelerisque
-            vel. Nam malesuada feugiat viverra. Proin pharetra dolor hendrerit mi auctor ultricies. Quisque iaculis quam
-            nec mauris sollicitudin, non cursus nunc porttitor. Aenean eget luctus nisl, non commodo mauris. Aliquam
-            pharetra tristique sagittis. Donec malesuada ullamcorper sem eu consectetur. Duis eget placerat orci, id
-            interdum est. Quisque pretium diam quis urna lobortis, non consectetur dui bibendum. Suspendisse dignissim
-            nisl sapien, sit amet hendrerit mi interdum at. Aenean cursus eros eget ex congue, eu facilisis purus
-            porttitor. Cras blandit turpis sed dui eleifend efficitur non eu quam.
+            </div>
         </div>
     </div>
     <a ui-sref="home" class="pull-right">« Volver a la página de inicio</a>

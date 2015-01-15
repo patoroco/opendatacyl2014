@@ -33,7 +33,7 @@
 
         function updateSearch(variable) {
             return function (newValue, oldValue) {
-                if ($rootScope[variable] && newValue != oldValue) {
+                if (($rootScope[variable] && newValue != oldValue) || (oldValue && !newValue)) {
                     search();
                 }
             };
