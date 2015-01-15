@@ -15,8 +15,9 @@
         <div class="col-md-9">
 
             <div style="padding-left:20px;padding-right:20px">
-                <p><b>{{jobsController.total}} ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em> en <em>{{$root.region
-                    || 'todas las provincias'}}</em></b></p>
+                <p><b>{{jobsController.total}} ofertas encontradas para <em>{{$root.text || 'todos los términos'}}</em>
+                    en <em>{{$root.region
+                        || 'todas las provincias'}}</em></b></p>
             </div>
             <div class="border row" style="margin:0px">
                 <div class="col-md-8">{{jobsController.total}} ofertas</div>
@@ -46,8 +47,11 @@
                         </div>
                     </div>
                 </div>
-                <pagination boundary-links="true" total-items="jobsController.total" ng-model="jobsController.currentPage" class="pagination-sm"
-                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" max-size="5" ng-change="jobsController.pageChanged()"
+                <pagination boundary-links="true" total-items="jobsController.total"
+                            ng-model="jobsController.currentPage" class="pagination-sm"
+                            ng-show="jobsController.jobs.length"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" max-size="5"
+                            ng-change="jobsController.pageChanged()"
                             last-text="&raquo;"></pagination>
             </div>
         </div>

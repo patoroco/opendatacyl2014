@@ -17,11 +17,10 @@
 
             <div class="job-box" style="margin-top:20px">
                 <div class="row">
-                    <div class="col-md-8">
-                        <h4><span class="red">{{controller.job.titulo | capitalize}}</span></h4>
+                    <div class="col-md-10">
+                        <h4><span class="red">{{controller.job.titulo | capitalize}} en {{controller.job.localidad | capitalize}}</span></h4>
                     </div>
-                    <div class="col-md-2">{{controller.job.localidad | capitalize}}</div>
-                    <div class="col-md-2"><span class="{{controller.viewDifficulty()[1]}}">{{controller.viewDifficulty()[0]}}</span></div>
+                    <div class="col-md-2"><h4><span class="{{controller.viewDifficulty()[1]}}">{{controller.viewDifficulty()[0]}}</span></h4></div>
                 </div>
                 <div class="row" ng-show="controller.job.contrato || controller.job.duracion_del_contrato">
                     <div class="col-md-6" ng-show="controller.job.contrato"><label>Contrato: </label> {{controller.job.contrato |

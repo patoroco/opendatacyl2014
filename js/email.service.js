@@ -1,11 +1,11 @@
 (function () {
     'use strict';
     angular.module('email.service', [])
-        .factory('emailService', ['$http','$location', emailService]);
+        .factory('emailService', ['$http','hostsService', emailService]);
 
-    function emailService($http, $location) {
+    function emailService($http, hostsService) {
 
-        var host = $location.host().indexOf('cyljob.es') != -1 ? 'cyljob.es' : 'cyljob.com';
+        var host = hostsService.getHost();
         var api = 'http://' + host + '/api/';
 
         return {
