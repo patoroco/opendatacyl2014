@@ -64,6 +64,11 @@
   .btn-without-border();
 }
 
+.btn-green {
+  .button-variant(white, @green, @green);
+  .btn-without-border();
+}
+
 .btn-without-border() {
   width: 120px;
   -webkit-border-radius: 0 !important;
@@ -129,6 +134,23 @@
   #evolution {
     background-color: @dark-gray;
     color: white;
+
+    slider, [slider] {
+      color: @dark-gray;
+    }
+
+    slider div.bar, [slider] div.bar {
+      background-color: white;
+    }
+
+    slider div.handle, [slider] div.handle {
+      border: 0px;
+      background-color: @red;
+    }
+
+    slider div.handle:after, [slider] div.handle:after {
+      background-color: white;
+    }
   }
 }
 

@@ -147,6 +147,55 @@ fieldset[disabled] .btn-red.active {
   color: #c92b26;
   background-color: white;
 }
+.btn-green {
+  color: white;
+  background-color: #228c00;
+  border-color: #228c00;
+  width: 120px;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+.btn-green:hover,
+.btn-green:focus,
+.btn-green.focus,
+.btn-green:active,
+.btn-green.active,
+.open > .dropdown-toggle.btn-green {
+  color: white;
+  background-color: #165900;
+  border-color: #134f00;
+}
+.btn-green:active,
+.btn-green.active,
+.open > .dropdown-toggle.btn-green {
+  background-image: none;
+}
+.btn-green.disabled,
+.btn-green[disabled],
+fieldset[disabled] .btn-green,
+.btn-green.disabled:hover,
+.btn-green[disabled]:hover,
+fieldset[disabled] .btn-green:hover,
+.btn-green.disabled:focus,
+.btn-green[disabled]:focus,
+fieldset[disabled] .btn-green:focus,
+.btn-green.disabled.focus,
+.btn-green[disabled].focus,
+fieldset[disabled] .btn-green.focus,
+.btn-green.disabled:active,
+.btn-green[disabled]:active,
+fieldset[disabled] .btn-green:active,
+.btn-green.disabled.active,
+.btn-green[disabled].active,
+fieldset[disabled] .btn-green.active {
+  background-color: #228c00;
+  border-color: #228c00;
+}
+.btn-green .badge {
+  color: #228c00;
+  background-color: white;
+}
 #content {
   background-color: #f8f8f8;
 }
@@ -202,6 +251,23 @@ fieldset[disabled] .btn-red.active {
   background-color: #444444;
   color: white;
 }
+#content #evolution slider,
+#content #evolution [slider] {
+  color: #444444;
+}
+#content #evolution slider div.bar,
+#content #evolution [slider] div.bar {
+  background-color: white;
+}
+#content #evolution slider div.handle,
+#content #evolution [slider] div.handle {
+  border: 0px;
+  background-color: #c92b26;
+}
+#content #evolution slider div.handle:after,
+#content #evolution [slider] div.handle:after {
+  background-color: white;
+}
 .radio-with-margin input[type=radio] {
   margin-right: 10px;
 }
@@ -244,9 +310,9 @@ footer a:visited {
   color: #c92b26;
 }
 .green {
-  color: #ff7f00;
+  color: #228c00;
 }
 .green {
-  color: #228c00;
+  color: #ff7f00;
 }
 

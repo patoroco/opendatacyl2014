@@ -8,23 +8,27 @@
         </div>
 
         <div class="col-md-6">
-            <div id="unemployment_map"></div>
-            <div style="background-color:white; width:100%; padding:20px">
-                <span style="color:black;">Paro a fecha: {{evolution.date}}</span>
-                <slider floor="0" ceiling="{{evolution.dates.length-1}}" step="1" ng-model="evolution.value"
-                        style="width:99%"></slider>
-                <button class="btn btn-lg btn-red" style="width:200px" ng-click="evolution.enableAnimation()">Empezar animación</button>
-                <button class="btn btn-lg btn-black" style="width:200px" ng-click="evolution.disableAnimation()">Parar animación</button>
-            </div>
+            <div id="unemployment_map" style=" color: black"></div>
+
         </div>
         <div class="col-md-6">
-            Paro a fecha: {{evolution.date}}
-            <div ng-repeat="nojobs in evolution.unemployments.rows | orderBy: 'provincia'">
-
-                <p>{{nojobs.provincia}} : {{nojobs.paro_truncado}}%</p>
-
-
+            <h4>Tasa de paro ({{evolution.date}})</h4>
+            <div ng-repeat="nojobs in evolution.unemployments.rows | orderBy: 'provincia'" class="row border" style="color:white">
+                <div class="col-md-3">
+                    {{nojobs.provincia}}
+                </div>
+                <div class="col-md-9">
+                    {{nojobs.paro_truncado}}%
+                </div>
             </div>
+            <slider floor="0" ceiling="{{evolution.dates.length-1}}" step="1" ng-model="evolution.value"
+                    style="width:99%"></slider>
+            <button class="btn btn-lg btn-green" style="width:200px" ng-click="evolution.enableAnimation()">Empezar
+                animación
+            </button>
+            <button class="btn btn-lg btn-red" style="width:200px" ng-click="evolution.disableAnimation()">Parar
+                animación
+            </button>
         </div>
     </div>
     <a ui-sref="home" class="pull-right">« Volver a la página de inicio</a>
