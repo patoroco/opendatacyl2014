@@ -27,7 +27,7 @@
                 user_name: 'opendatacyl',
                 type: 'cartodb',
                 sublayers: [{
-                    sql: "SELECT * FROM empleo WHERE fecha = '09/01/14'",
+                    sql: "SELECT * FROM empleo WHERE fechagit = '09/01/14'",
                     cartocss: cartocss
                 }]
             }).addTo(map)
