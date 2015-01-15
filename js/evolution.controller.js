@@ -11,7 +11,7 @@
         $rootScope.evolution = true;
 
 
-        var map = new L.Map('unemployment_map', {
+        var unemployment_map = new L.Map('unemployment_map', {
             zoom: 7,
             center: PROVINCE_COORD['Palencia'],
             minZoom: 3,
@@ -22,15 +22,15 @@
 
         $scope.$watch('$viewContentLoaded', function () {
 
-            L.tileLayer(TILES_URL).addTo(map);
-            cartodb.createLayer(map, {
+            L.tileLayer(TILES_URL).addTo(unemployment_map);
+            cartodb.createLayer(unemployment_map, {
                 user_name: 'opendatacyl',
                 type: 'cartodb',
                 sublayers: [{
                     sql: "SELECT * FROM empleo WHERE fecha = '09/01/14'",
                     cartocss: cartocss
                 }]
-            }).addTo(map)
+            }).addTo(unemployment_map)
                 .done(function (layer) {
 
                     executeSQL(vm.date);
