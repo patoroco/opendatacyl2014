@@ -10,7 +10,7 @@
 
         $rootScope.evolution = true;
 
-        var sql = new cartodb.SQL({ user: 'opendatacyl' });
+
         var map = new L.Map('unemployment_map', {
             zoom: 7,
             center: PROVINCE_COORD['Palencia'],
@@ -27,7 +27,7 @@
                 user_name: 'opendatacyl',
                 type: 'cartodb',
                 sublayers: [{
-                    sql: "SELECT * FROM empleo WHERE fechagit = '09/01/14'",
+                    sql: "SELECT * FROM empleo WHERE fecha = '09/01/14'",
                     cartocss: cartocss
                 }]
             }).addTo(map)
@@ -45,7 +45,7 @@
                 });
 
             function executeSQL(date) {
-
+                var sql = new cartodb.SQL({ user: 'opendatacyl' });
                 sql.execute("SELECT * FROM empleo WHERE fecha = '" + date + "'")
                     .done(function(data) {
                         vm.unemployments = data;
