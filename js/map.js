@@ -1,6 +1,7 @@
-var SQL_API_URL = 'https://jorge.cartodb.com/api/v2/sql';
-var VIZ_URL = 'http://jorge.cartodb.com/api/v2/viz/7966eb1c-998e-11e4-b96f-0e4fddd5de28/viz.json';
+var VIZ_URL = 'http://opendatacyl.cartodb.com/api/v2/viz/81b7caf8-9c49-11e4-8bfa-0e018d66dc29/viz.json';
 var TILES_URL = 'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png';
+
+var ZOOM_TO_POINT = 7;
 
 var PROVINCE_COORD = {
     'Ávila': [40.654347222222, -4.6962222222222],
@@ -19,7 +20,7 @@ var grouped_layer;
 var points_layer;
 
 function init_map() {
-    map = new L.Map('header_map', {zoom: 7, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
+    map = new L.Map('header_map', {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
     L.tileLayer(TILES_URL).addTo(map);
 
     cartodb.createLayer(map, VIZ_URL)
