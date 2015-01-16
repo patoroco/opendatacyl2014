@@ -23,7 +23,7 @@
             maxZoom: 8
         });
 
-        //FIXME refactor this plz
+        //FIXME refactor this plz, podría hacer un timeout con el load, pero datos o mapa?
 
         $scope.$watch('$viewContentLoaded', function () {
             L.tileLayer(TILES_URL).addTo(unemployment_map);
@@ -37,7 +37,7 @@
         $scope.$watch('evolution.value', function (value, oldValue) {
             if (value != null && value != oldValue) {
                 executeSQL(value);
-                var query = "SELECT * FROM empleo WHERE fecha = '" + vm.date + "'"
+                var query = "SELECT * FROM empleo WHERE fecha = '" + vm.date + "' order by provincia ASC"
                 layer.getSubLayer(0).setSQL(query);
             }
         });
@@ -45,7 +45,7 @@
         function executeSQL(value) {
             vm.date = vm.dates[value >= vm.dates.length ? 0 : value];
             var sql = new cartodb.SQL({user: 'opendatacyl'});
-            var query = "SELECT * FROM empleo WHERE fecha = '" + vm.date + "'"
+            var query = "SELECT * FROM empleo WHERE fecha = '" + vm.date + "' order by provincia ASC"
             sql.execute(query)
                 .done(function (data) {
                     vm.unemployments = data;
