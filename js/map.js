@@ -31,12 +31,8 @@ function init_map()
         points_layer.set({ 'interactivity': ['titulo', 'localidad', 'identificador'] });
 
         points_layer.on('featureClick', function(e, pos, latlng, data) {
-            var absolute_path = CYLJOB_URL + "/#/jobDetail/" + data.identificador;
-            //TODO: poner path del scope
-            // cargar detalle data.identificador
             var scope = angular.element($("#region")).scope();
-            console.log(scope);
-            alert(scope);
+            scope.mainController.goToDetail(data.identificador);
         });
 
         vis.addOverlay({

@@ -22,6 +22,7 @@
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
         vm.search = search;
         vm.differenceBetweenDays = dateService.differenceBetweenDays;
+        vm.goToDetail = goToDetail;
 
         $rootScope.$watch('region', function (data) {
             if (data) {
@@ -31,6 +32,10 @@
 
         function search() {
             $state.go('jobs', {region: $rootScope.region, text: $rootScope.text});
+        }
+
+        function goToDetail(id) {
+            $state.go('jobDetail', {id : id})
         }
     }
 
