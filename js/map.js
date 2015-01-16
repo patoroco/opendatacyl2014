@@ -19,7 +19,7 @@ var map;
 var grouped_layer;
 var points_layer;
 
-function init_map() {
+function init_map2() {
     map = new L.Map('header_map', {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
     L.tileLayer(TILES_URL).addTo(map);
 
@@ -33,13 +33,48 @@ function init_map() {
         });
 
     map.on('zoomend', function () {
-        if (map.getZoom() > 7) {
+        if (map.getZoom() > ZOOM_TO_POINT) {
             show_points_layer();
         } else {
             show_grouped_layer();
         }
     });
 }
+
+
+var options = {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10};
+
+function init_map()
+{
+    cartodb.createVis('header_map', VIZ_URL, options)
+    .done(function(vis, layers) {
+        map = vis.getNativeMap();
+        grouped_layer = layers[1].getSubLayer(1);
+        points_layer = layers[1].getSubLayer(2);
+
+        points_layer.set({ 'interactivity': ['cartodb_id', 'titulo', 'localidad'] });
+
+        vis.addOverlay({
+            type: 'tooltip',
+            template: '<h3>{{titulo}}</h3><p>{{localidad}}</p>',
+            width: 200,
+            position: 'bottom|right',
+            layer: points_layer,
+            interactivity: 'cartodb_id, titulo',
+        });
+
+        map.on('zoomend', function () {
+            if (map.getZoom() > ZOOM_TO_POINT) {
+                show_points_layer();
+            } else {
+                show_grouped_layer();
+            }
+        });
+
+        show_points_layer();
+    });
+}
+
 
 function show_grouped_layer() {
     grouped_layer.show();
