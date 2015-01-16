@@ -45,7 +45,7 @@ function init_map()
             width: 200,
             position: 'bottom|right',
             layer: points_layer,
-            interactivity: 'cartodb_id, titulo',
+            interactivity: 'cartodb_id, titulo'
         });
 
         map.on('zoomend', function () {

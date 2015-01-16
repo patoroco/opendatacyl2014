@@ -254,7 +254,7 @@ fieldset[disabled] .btn-green.active {
 }
 #content #evolution {
   background-color: #444444;
-  color: white;
+  color: white !important;
 }
 #content #evolution slider,
 #content #evolution [slider] {

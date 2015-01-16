@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service',
-        'email.controller', 'date.service', 'evolution.controller', 'ui.slider', 'hosts.service', 'employment.controller'])
+        'email.controller', 'date.service', 'evolution.controller', 'ui.slider', 'hosts.service', 'employment.controller'
+        , 'graphics.controller', 'nvd3ChartDirectives'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
             $locationProvider.html5Mode(false)

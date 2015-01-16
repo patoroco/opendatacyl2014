@@ -1,5 +1,19 @@
 <div id="evolution" class="container-fluid">
+    <div class="row" ng-controller="graphicsController as graphicsController">
 
+        <div class="col-md-6">
+            <nvd3-line-chart style="color:white"
+                    data="graphicsController.exampleData"
+                    showXAxis="true"
+                    showYAxis="true"
+                    tooltips="true"
+                    xAxisTickValues="graphicsController.xAxisTickValues()"
+                    interactive="true">
+            </nvd3-line-chart>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
     <div class="row" ng-controller="EvolutionController as evolution">
         <div style="text-align:center; padding:40px">
             <img src="img/ic_study.png">
@@ -37,7 +51,7 @@
         <div class="col-md-6">
             <h3><b>Cuentas de la seguridad social</b></h3>
 
-            <div class="row border" >
+            <div class="row border">
                 <div class="col-md-1">
                     <input type="radio"
                            ng-model="employment.search" value="'02-2001', '12-2007'"></div>
@@ -82,13 +96,15 @@
                 </div>
             </div>-->
             <br/>
+
             <div>
                 <h4>Comentarios sobre los datos</h4>
 
                 <p style="color:white">La evolución de las cuentas de la seguridad social en Castilla y León nos deja
                     datos interesantes:
                 <ul>
-                    <li>El momento de más trabajadores cotizando (a nivel CyL) fue el <b>último trimestre de 2007</b></li>
+                    <li>El momento de más trabajadores cotizando (a nivel CyL) fue el <b>último trimestre de 2007</b>
+                    </li>
                     <li>El peor trimestre con respecto a cotizantes fue el primer trimestre de 2014</li>
                     <li>Las cotizaciones actuales (Q3 2014) son similares a Marzo 2005 y Septiembre 2012 (el mínimo se
                         alcanzo en Q1 2014)
@@ -97,8 +113,12 @@
                 </p>
                 <p style="color:white">Los datos de establecimientos hacen entrever otro tipo de ajuste:</p>
                 <ul>
-                    <li>El mínimo número de establecimiento se alcanzó en el <b>Q4 2011</b> (dos años antes que el mínimo en trabajadores)</li>
-                    <li>El máximo número de establecimiento se obtuvo en el <b>Q3 2012</b>, aún así los 2 últimos años son máximos en la serie</li>
+                    <li>El mínimo número de establecimiento se alcanzó en el <b>Q4 2011</b> (dos años antes que el
+                        mínimo en trabajadores)
+                    </li>
+                    <li>El máximo número de establecimiento se obtuvo en el <b>Q3 2012</b>, aún así los 2 últimos años
+                        son máximos en la serie
+                    </li>
                 </ul>
             </div>
         </div>
