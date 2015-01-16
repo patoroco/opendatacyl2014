@@ -1,3 +1,4 @@
+var CYLJOB_URL = "http://localhost:8000";
 var VIZ_URL = 'http://opendatacyl.cartodb.com/api/v2/viz/81b7caf8-9c49-11e4-8bfa-0e018d66dc29/viz.json';
 var TILES_URL = 'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png';
 
@@ -19,34 +20,9 @@ var map;
 var grouped_layer;
 var points_layer;
 
-function init_map2() {
-    map = new L.Map('header_map', {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10});
-    L.tileLayer(TILES_URL).addTo(map);
-
-    cartodb.createLayer(map, VIZ_URL)
-        .addTo(map)
-        .on('done', function (layer) {
-            grouped_layer = layer.getSubLayer(1);
-            points_layer = layer.getSubLayer(2);
-
-            show_grouped_layer();
-        });
-
-    map.on('zoomend', function () {
-        if (map.getZoom() > ZOOM_TO_POINT) {
-            show_points_layer();
-        } else {
-            show_grouped_layer();
-        }
-    });
-}
-
-var base_url = "http://localhost:8000";
-var options = {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10};
-
 function init_map()
 {
-    cartodb.createVis('header_map', VIZ_URL, options)
+    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10};)
     .done(function(vis, layers) {
         map = vis.getNativeMap();
         grouped_layer = layers[1].getSubLayer(1);
@@ -55,7 +31,7 @@ function init_map()
         points_layer.set({ 'interactivity': ['titulo', 'localidad', 'identificador'] });
 
         points_layer.on('featureClick', function(e, pos, latlng, data) {
-            var absolute_path = base_url + "/#/jobDetail/" + data.identificador;
+            var absolute_path = CYLJOB_URL + "/#/jobDetail/" + data.identificador;
             window.location.href = absolute_path;
         });
 
