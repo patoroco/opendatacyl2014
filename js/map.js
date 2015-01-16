@@ -32,7 +32,10 @@ function init_map()
 
         points_layer.on('featureClick', function(e, pos, latlng, data) {
             var absolute_path = CYLJOB_URL + "/#/jobDetail/" + data.identificador;
-            window.location.href = absolute_path;
+            //TODO: poner path del scope
+            var scope = angular.element($("#region")).scope();
+            console.log(scope);
+            alert(scope);
         });
 
         vis.addOverlay({
