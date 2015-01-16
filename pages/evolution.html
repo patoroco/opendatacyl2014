@@ -1,18 +1,17 @@
-<div id="evolution" class="container-fluid" ng-controller="EvolutionController as evolution">
+<div id="evolution" class="container-fluid">
 
-    <div class="row">
-        <div style="text-align:center; padding-top:40px">
+    <div class="row" ng-controller="EvolutionController as evolution">
+        <div style="text-align:center; padding:40px">
             <img src="img/ic_study.png">
 
             <h3>Estudio sobre la evolución del empleo en Castilla y León</h3>
         </div>
-
         <div class="col-md-6">
             <div id="unemployment_map" style=" color: black"></div>
-
         </div>
         <div class="col-md-6">
-            <h4>Tasa de paro ({{evolution.date}})</h4>
+            <h3><b>Tasa de paro ({{evolution.date}})</b></h3>
+
             <div ng-repeat="nojobs in evolution.unemployments.rows" class="row border" style="color:white">
                 <div class="col-md-3">
                     {{nojobs.provincia}}
@@ -29,6 +28,79 @@
             <button class="btn btn-lg btn-red" style="width:200px" ng-click="evolution.disableAnimation()">Parar
                 animación
             </button>
+        </div>
+    </div>
+    <div class="row" ng-controller="EmploymentController as employment">
+        <div class="col-md-6">
+            <div id="employment_map" style="color: black"></div>
+        </div>
+        <div class="col-md-6">
+            <h3><b>Cuentas de la seguridad social</b></h3>
+
+            <div class="row border" >
+                <div class="col-md-1">
+                    <input type="radio"
+                           ng-model="employment.search" value="'02-2001', '12-2007'"></div>
+                <div class="col-md-11">Mostrar {{employment.searching}} en 2001 vs <b>2007</b>
+
+                    <p>Crecimiento en la burbuja, de Febrero de 2001 hasta el punto con más cotizaciones, Diciembre de
+                        2007</p>
+                </div>
+            </div>
+            <div class="row border">
+                <div class="col-md-1">
+                    <input type="radio"
+                           ng-model="employment.search" value="'02-2001', '03-2014'"></div>
+                <div class="col-md-11">Mostrar {{employment.searching}} en 2001 vs <b>2014</b>
+
+                    <p>Crecimiento de 2001 hasta el peor punto de la crisis (Marzo 2014)</p>
+                </div>
+            </div>
+            <div class="row border">
+                <div class="col-md-1">
+                    <input type="radio"
+                           ng-model="employment.search" value="'12-2007', '03-2014'"></div>
+                <div class="col-md-11">Mostrar {{employment.searching}} en <b>2014</b> vs <b>2007</b>
+
+                    <p>Comparación del peor trimestre (03/2014, esfera interior) hasta el mejor trimestre (12/2007,
+                        esfera exterior)</p>
+                </div>
+            </div>
+            <div class="row border">
+                <div class="col-md-1">
+                    <input type="checkbox"
+                           ng-model="employment.hideWorkers"></div>
+                <div class="col-md-11">Mostrar datos de establecimientos
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-1">
+                    <input type="radio"
+                           ng-model="employment.search" value="'12-2013', '09-2014'"></div>
+                <div class="col-md-11">Mostrar cotizaciones en <b>Diciembre 2013</b> vs <b>Septiembre 2014</b>
+                    <p>Crecimiento en el año 2014</p>
+                </div>
+            </div>-->
+            <br/>
+            <div>
+                <h4>Comentarios sobre los datos</h4>
+
+                <p style="color:white">La evolución de las cuentas de la seguridad social en Castilla y León nos deja
+                    datos interesantes:
+                <ul>
+                    <li>El momento de más trabajadores cotizando (a nivel CyL) fue el <b>último trimestre de 2007</b></li>
+                    <li>El peor trimestre con respecto a cotizantes fue el primer trimestre de 2014</li>
+                    <li>Las cotizaciones actuales (Q3 2014) son similares a Marzo 2005 y Septiembre 2012 (el mínimo se
+                        alcanzo en Q1 2014)
+                    </li>
+                </ul>
+                </p>
+                <p style="color:white">Los datos de establecimientos hacen entrever otro tipo de ajuste:</p>
+                <ul>
+                    <li>El mínimo número de establecimiento se alcanzó en el <b>Q4 2011</b> (dos años antes que el mínimo en trabajadores)</li>
+                    <li>El máximo número de establecimiento se obtuvo en el <b>Q3 2012</b>, aún así los 2 últimos años son máximos en la serie</li>
+                </ul>
+            </div>
         </div>
     </div>
     <a ui-sref="home" class="pull-right">« Volver a la página de inicio</a>

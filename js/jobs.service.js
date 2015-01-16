@@ -13,6 +13,12 @@
 
         function getJobsByRegionAndText(region, text, when, page) {
             var date = calculateDate(when);
+
+            if (region) {
+                region = region.toUpperCase() == 'ÁVILA' ? 'avila' : region;
+                region = region.toUpperCase() == 'LEÓN' ? 'leon' : region;
+            }
+
             return $http.get(hostsService.getDomain() + 'jobs/', {
                 params: {province: region, search_term: text, publish_date: date, page: page}
             });
@@ -25,7 +31,7 @@
         function calculateDate(when) {
             var date = new Date();
             if (when === 'day') {
-                date.setDate(date.getDate() - 1);
+                date.setDate(date.getDate() - 2);
             } else if (when === 'week') {
                 date.setDate(date.getDate() - 7);
             } else if (when === 'month') {
