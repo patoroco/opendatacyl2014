@@ -41,7 +41,7 @@ function init_map2() {
     });
 }
 
-
+var base_url = "http://localhost:8000";
 var options = {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10};
 
 function init_map()
@@ -52,7 +52,12 @@ function init_map()
         grouped_layer = layers[1].getSubLayer(1);
         points_layer = layers[1].getSubLayer(2);
 
-        points_layer.set({ 'interactivity': ['cartodb_id', 'titulo', 'localidad'] });
+        points_layer.set({ 'interactivity': ['titulo', 'localidad', 'identificador'] });
+
+        points_layer.on('featureClick', function(e, pos, latlng, data) {
+            var absolute_path = base_url + "/#/jobDetail/" + data.identificador;
+            window.location.href = absolute_path;
+        });
 
         vis.addOverlay({
             type: 'tooltip',
