@@ -22,7 +22,7 @@ var points_layer;
 
 function init_map()
 {
-    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10};)
+    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10})
     .done(function(vis, layers) {
         map = vis.getNativeMap();
         grouped_layer = layers[1].getSubLayer(1);
