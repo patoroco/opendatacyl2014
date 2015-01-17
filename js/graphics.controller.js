@@ -1,30 +1,66 @@
 (function () {
     'use strict';
     angular.module('graphics.controller', ['ui.router'])
-        .controller('graphicsController', ['$scope', '$http', graphicsController]);
+        .controller('graphicsController', ['$scope', '$http', '$q', graphicsController]);
 
-    function graphicsController($scope, $http) {
+    function graphicsController($scope, $http, $q) {
         var vm = this;
+        vm.inactives = [];
+        vm.xAxisTickFormat = xAxisTickFormat;
+        vm.toolTipContentFunction = toolTipContentFunction;
+        vm.infrastructure = [];
 
-
-        var Items = $http.get("pages/prueba.csv").then(function (response) {
-            vm.array = CSVToArray(response.data, ',');
-            for (var i = 0; i < vm.array.length; i++) {
-                vm.array[i][0] = i;
-                vm.array[i][1] = parseFloat(vm.array[i][1]);
-            }
-
-             ///array = [['1025409600000', 0], ['1298869200000', 133.41437346605], ['1301544000000', 125.46646042904], ['1304136000000', 129.76784954301]];
-            vm.exampleData = [
-                {
-                    "key": "Series 1",
-                    "values":vm.array
-                }];
-
-
+        $q.all([
+            getCSV("inactivos.csv",
+                ['Estudiantes', 'Labores de hogar', 'Incapacitados', 'Jubilados', 'Otros'],
+                ['#C92B26', '#228C00', '#888888', '#FF7F00', 'yellow'])
+        ]).then(function (result) {
+            vm.inactives = result[0];
         });
 
-        //BUG!
+        $q.all([
+            getCSV("licitaciones.csv",
+                ['Vivienda', 'Edificación', 'Obra civil'],
+                ['#228C00', '#FF7F00', '#C92B26'])
+        ]).then(function (result) {
+            vm.infrastructure = result[0];
+        });
+
+        function getCSV(url, keys, colors) {
+            return $http.get("pages/csv/" + url).then(function (response) {
+                var elements = [];
+                var file = CSVToArray(response.data, ',');
+
+                for (var column = 1; column < file[0].length; column++) {
+                    var values = [];
+                    var text_x = [];
+                    for (var row = 0; row < file.length; row++) {
+                        values.push([row, parseFloat(file[row][column])]);
+                        text_x.push(file[row][0]);
+                    }
+                    elements.push({
+                        "key": keys[column - 1],
+                        "values": values,
+                        "color": colors[column - 1],
+                        "text_x": text_x,
+                        "disabled": column != 1 && column != 2
+                    });
+                }
+                return elements;
+            });
+        };
+
+        function xAxisTickFormat() {
+            return function (d) {
+                return vm.inactives[0].text_x[d];
+            }
+        }
+
+        function toolTipContentFunction() {
+            return function (key, x, y, e, graph) {
+                return '<p>' + y + ' (miles) de ' + key + ' el ' + x + '</p>';
+            }
+        }
 
     }
 

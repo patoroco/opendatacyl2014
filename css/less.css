@@ -276,6 +276,21 @@ fieldset[disabled] .btn-green.active {
 #content #evolution .border {
   color: white;
 }
+#content #evolution .graph {
+  color: white;
+  width: 100%;
+}
+#content #evolution .graph svg {
+  height: 400px;
+  padding-left: 40px;
+}
+#content #evolution .graph svg text {
+  fill: white;
+}
+#content #evolution .graph .nv-x .tick line,
+#content #evolution .graph .nv-y .tick line {
+  display: none;
+}
 .radio-with-margin input[type=radio] {
   margin-right: 10px;
 }

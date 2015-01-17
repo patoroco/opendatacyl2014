@@ -1,19 +1,5 @@
 <div id="evolution" class="container-fluid">
-    <div class="row" ng-controller="graphicsController as graphicsController">
 
-        <div class="col-md-6">
-            <nvd3-line-chart style="color:white"
-                    data="graphicsController.exampleData"
-                    showXAxis="true"
-                    showYAxis="true"
-                    tooltips="true"
-                    xAxisTickValues="graphicsController.xAxisTickValues()"
-                    interactive="true">
-            </nvd3-line-chart>
-        </div>
-        <div class="col-md-6">
-        </div>
-    </div>
     <div class="row" ng-controller="EvolutionController as evolution">
         <div style="text-align:center; padding:40px">
             <img src="img/ic_study.png">
@@ -120,6 +106,60 @@
                         son máximos en la serie
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div ng-controller="graphicsController as graphicsController">
+        <div class="row">
+            <div class="col-md-6">
+                <nvd3-stacked-area-chart class="graph"
+                                         data="graphicsController.inactives"
+                                         showXAxis="true"
+                                         showYAxis="true"
+                                         showControls="true"
+                                         showLegend="true"
+                                         interpolate="none"
+                                         tooltips="true"
+                                         interpolate="linear"
+                                         tooltipcontent="graphicsController.toolTipContentFunction()"
+                                         xaxistickformat="graphicsController.xAxisTickFormat()"
+                                         interactive="true"/>
+            </div>
+            <div class="col-md-6">
+                <h3><b>Distribución de inactivos</b></h3>
+
+                <p style="color:white">Se representan, en miles de personas, la composición de la población inactiva de
+                    Castilla y León.</p>
+
+                <p style="color:white">Se puede filtrar, desde la leyenda, por las diferentes categorías contempladas:
+                <ul>
+                    <li>Estudiantes</li>
+                    <li>Labores del hogar</li>
+                    <li>Incapacitados</li>
+                    <li>Jubilados</li>
+                    <li>Otras categorías</li>
+                </ul>
+                </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <nvd3-stacked-area-chart class="graph"
+                                         data="graphicsController.infrastructure"
+                                         showXAxis="true"
+                                         showYAxis="true"
+                                         showControls="true"
+                                         showLegend="true"
+                                         interpolate="none"
+                                         tooltips="true"
+                                         interpolate="linear"
+                                         interactive="true"/>
+            </div>
+            <div class="col-md-6">
+                <h3><b>Gastos en licitaciones</b></h3>
+
+
             </div>
         </div>
     </div>
