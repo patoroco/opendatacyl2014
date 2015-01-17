@@ -166,23 +166,35 @@
       width: 200px;
     }
 
+    #pyramid {
+      .nv-x .tick {
+        display: none;
+      }
+    }
+
+    .evolution_header {
+      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
     .graph {
       color: white;
       width: 100%;
 
       svg {
         height: 400px;
-        padding-left: 40px;
       }
-
       svg text {
         fill: white;
       }
-
-      .nv-x .tick line, .nv-y .tick line {
+      .nv-x .tick line {
         display: none;
       }
-
+      .nv-y .tick line {
+        opacity: 0.2 !important;
+        fill: @dark-gray;
+      }
     }
 
   }

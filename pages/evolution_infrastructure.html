@@ -1,16 +1,14 @@
 <div class="container-fluid evolution">
-
     <div>
-        <div style="text-align:center; padding:40px">
+        <div class="evolution_header">
             <img src="img/ic_study.png">
             <h3>Estudio sobre la evolución del empleo en Castilla y León: gastos en infraestructuras</h3>
             <div ng-include src="'pages/menu.html'"></div>
         </div>
-
     </div>
     <div ng-controller="InfrastructureController as infrastructureController">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-9">
                 <nvd3-stacked-area-chart class="graph"
                                          data="infrastructureController.infrastructure"
                                          showXAxis="true"
@@ -20,17 +18,18 @@
                                          interpolate="none"
                                          tooltipcontent="infrastructureController.toolTipContentFunction()"
                                          xaxistickformat="infrastructureController.xAxisTickFormat()"
+                                         yaxistickformat="infrastructureController.yAxisTickFormat()"
                                          tooltips="true"
                                          interpolate="linear"
                                          interactive="true"/>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <h3><b>Gastos en licitaciones</b></h3>
-
+                <p style="color:white">Representamos el valor, en millones de euros, de las licitaciones de infraestructuras y obra pública desde 1991 hasta la actualidad.</p>
 
             </div>
         </div>
-        <a ui-sref="evolution_inactives" class="pull-left">« Volver a la página anterior: inactivos</a>
-        <a ui-sref="evolution_unemployment" class="pull-right">Siguiente página: datos de empleo »</a>
     </div>
+    <a ui-sref="evolution_inactives" class="pull-left">« Volver a la página anterior: inactivos</a>
+    <a ui-sref="evolution_unemployment" class="pull-right">Siguiente página: datos de empleo »</a>
 </div>

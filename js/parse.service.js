@@ -5,11 +5,13 @@
 
     function parseService($http) {
 
+        var colors = [ '#F2E300','#7FB61D', '#0172B6','#E42334','#003956', '#840461',  '#EF8200','#006138', '#01737D'];
+
         return {
             getCSV: getCSV
         }
 
-        function getCSV(url, keys, colors) {
+        function getCSV(url, keys, enabled) {
             return $http.get("pages/csv/" + url).then(function (response) {
                 var elements = [];
                 var file = CSVToArray(response.data, ',');
@@ -26,11 +28,11 @@
                         "values": values,
                         "color": colors[column - 1],
                         "text_x": text_x,
-                        "disabled": column != 1 && column != 2
+                        "disabled": enabled ? enabled[column-1] : false
                     });
                 }
                 return elements;
-            });
+            })
         };
 
         function CSVToArray(strData, strDelimiter) {

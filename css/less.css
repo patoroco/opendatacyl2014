@@ -279,20 +279,30 @@ fieldset[disabled] .btn-green.active {
 #content .evolution #menu img {
   width: 200px;
 }
+#content .evolution #pyramid .nv-x .tick {
+  display: none;
+}
+#content .evolution .evolution_header {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
 #content .evolution .graph {
   color: white;
   width: 100%;
 }
 #content .evolution .graph svg {
   height: 400px;
-  padding-left: 40px;
 }
 #content .evolution .graph svg text {
   fill: white;
 }
-#content .evolution .graph .nv-x .tick line,
-#content .evolution .graph .nv-y .tick line {
+#content .evolution .graph .nv-x .tick line {
   display: none;
+}
+#content .evolution .graph .nv-y .tick line {
+  opacity: 0.2 !important;
+  fill: #444444;
 }
 .radio-with-margin input[type=radio] {
   margin-right: 10px;

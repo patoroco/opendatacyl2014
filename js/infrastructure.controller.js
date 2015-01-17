@@ -5,19 +5,22 @@
 
     function InfrastructureController($scope, parseService, $q, $rootScope) {
         var vm = this;
-        vm.inactives = [];
         vm.xAxisTickFormat = xAxisTickFormat;
+        vm.yAxisTickFormat = yAxisTickFormat;
         vm.toolTipContentFunction = toolTipContentFunction;
         $rootScope.evolution = true;
 
-        vm.infrastructure = [];
         parseService.getCSV("licitaciones.csv",
-            ['Vivienda', 'Edificación', 'Obra civil'],
-            ['#228C00', '#FF7F00', '#C92B26']).
-            then(function (result) {
+            ['Vivienda', 'Edificación', 'Obra civil']
+        ).then(function (result) {
                 vm.infrastructure = result;
             });
 
+        function yAxisTickFormat() {
+            return function (d) {
+                return parseInt(d / 1000);
+            }
+        }
 
         function xAxisTickFormat() {
             return function (d) {
@@ -27,7 +30,7 @@
 
         function toolTipContentFunction() {
             return function (key, x, y, e, graph) {
-                return '<p>' + y + ' (miles de euros) de ' + key + ' el ' + x + '</p>';
+                return '<p>' + parseInt(y) + ' millones de euros de ' + key + ' el ' + x + '</p>';
             }
         }
 

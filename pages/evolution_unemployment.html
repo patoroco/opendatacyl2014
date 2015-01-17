@@ -1,5 +1,70 @@
 <div class="container-fluid evolution">
+    <div>
+        <div class="evolution_header">
+            <img src="img/ic_study.png">
 
+            <h3>Estudio sobre la evolución del empleo en Castilla y León: distribución de ocupación</h3>
 
+            <div ng-include src="'pages/menu.html'"></div>
+        </div>
+    </div>
+    <div ng-controller="UnemploymentController as unemploymentController">
+        <div class="row">
+            <div class="col-md-9">
+                <nvd3-multi-bar-chart class="graph"
+                                      data="unemploymentController.actives"
+                                      showXAxis="true"
+                                      showYAxis="true"
+                                      showControls="true"
+                                      showLegend="true"
+                                      tooltipcontent="unemploymentController.toolTipContentFunction()"
+                                      xaxistickformat="unemploymentController.xAxisTickFormat()"
+                                      yaxistickformat="unemploymentController.yAxisTickFormat()"
+                                      interpolate="none"
+                                      tooltips="true"
+                                      interactive="true"/>
+            </div>
+            <div class="col-md-3">
+                <h3><b>Población activa vs inactivos</b></h3>
 
+                <p style="color:white">En miles de personas, hombres y mujeres activos vs inactivos</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <nvd3-stacked-area-chart class="graph"
+                                         data="unemploymentController.unemployed"
+                                         showXAxis="true"
+                                         showYAxis="true"
+                                         showControls="true"
+                                         showLegend="true"
+                                         interpolate="none"
+                                         tooltipcontent="unemploymentController.toolTipContentFunction()"
+                                         xaxistickformat="unemploymentController.xAxisTickFormatUnemployed()"
+                                         yaxistickformat="unemploymentController.yAxisTickFormat()"
+                                         tooltips="true"
+                                         interactive="true"/>
+            </div>
+            <div class="col-md-3">
+                <h3><b>Composición de la población activa</b></h3>
+
+                <p style="color:white">Mostramos para hombres (V) y mujeres (M) las siguientes variables:
+                <ul>
+                    <li>Personas activas (trabajando o buscando)</li>
+                    <li>Ocupados</li>
+                    <li>Parados</li>
+                    <li>Parados recién incorporados al mercado de trabajo</li>
+                </ul>
+
+                </p>
+                <p style="color:white">Desde la leyenda puede filtrar la información o cambiar el tipo de representación
+                    (stacked, stream...)</p>
+            </div>
+
+        </div>
+    </div>
+    <a ui-sref="evolution_infrastructure" class="pull-left">« Volver a la página anterior: gastos en
+        infraestructura</a>
+    <a ui-sref="evolution_poblation" class="pull-right">Siguiente página: datos de población »</a>
 </div>

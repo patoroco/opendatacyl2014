@@ -1,19 +1,18 @@
 (function () {
     'use strict';
     angular.module('inactives.controller', ['ui.router'])
-        .controller('InactivesController', ['$scope', 'parseService', '$q','$rootScope', InactivesController]);
+        .controller('InactivesController', ['$scope', 'parseService', '$q', '$rootScope', InactivesController]);
 
     function InactivesController($scope, parseService, $q, $rootScope) {
         var vm = this;
-        vm.inactives = [];
         vm.xAxisTickFormat = xAxisTickFormat;
         vm.toolTipContentFunction = toolTipContentFunction;
         $rootScope.evolution = true;
 
+
         parseService.getCSV("inactivos.csv",
-            ['Estudiantes', 'Labores de hogar', 'Incapacitados', 'Jubilados', 'Otros'],
-            ['#C92B26', '#228C00', '#888888', '#FF7F00', 'yellow'])
-            .then(function (result) {
+            ['Estudiantes', 'Labores de hogar', 'Incapacitados', 'Jubilados', 'Otros']
+        ).then(function (result) {
                 vm.inactives = result;
             });
 

@@ -1,0 +1,68 @@
+<div class="container-fluid evolution">
+    <div>
+        <div class="evolution_header">
+            <img src="img/ic_study.png">
+            <h3>Estudio sobre la evolución del empleo en Castilla y León: población por edad</h3>
+            <div ng-include src="'pages/menu.html'"></div>
+        </div>
+    </div>
+    <div ng-controller="PoblationController as poblationController">
+        <div class="row">
+            <div class="col-md-9">
+                <nvd3-line-chart class="graph"
+                                         data="poblationController.men"
+                                         showXAxis="true"
+                                         showYAxis="true"
+                                         showControls="true"
+                                         showLegend="true"
+                                         tooltipcontent="poblationController.toolTipContentFunction()"
+                                         interpolate="none"
+                                         tooltips="true"
+                                         interactive="true"/>
+            </div>
+            <div class="col-md-3">
+                <h3><b>Hombres por edad</b></h3>
+                <p style="color:white">De 1996 a 2013</p>
+            </div>
+        </div>
+       <div class="row">
+            <div class="col-md-9">
+                <nvd3-line-chart class="graph"
+                                 data="poblationController.women"
+                                 showXAxis="true"
+                                 showYAxis="true"
+                                 showControls="true"
+                                 showLegend="true"
+                                 tooltipcontent="poblationController.toolTipContentFunction()"
+                                 interpolate="none"
+                                 tooltips="true"
+                                 interactive="true"/>
+            </div>
+            <div class="col-md-3">
+                <h3><b>Mujeres por edad (1996-2013)</b></h3>
+                <p style="color:white">De 1996 a 2013</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <nvd3-multi-bar-horizontal-chart class="graph" id="pyramid"
+                                 data="poblationController.all"
+                                 showXAxis="true"
+                                 showYAxis="true"
+                                 showControls="true"
+                                 showLegend="true"
+                                 xaxistickformat="poblationController.xAxisPyramidTickFormat()"
+                                 yaxistickformat="poblationController.yAxisPyramidTickFormat()"
+                                 tooltipcontent="poblationController.toolTipContentFunctionPyramid()"
+                                 interpolate="none"
+                                 tooltips="true"
+                                 interactive="true"/>
+            </div>
+            <div class="col-md-5">
+                <h3><b>Pirámide de población</b></h3>
+                <p style="color:white">Para 2013</p>
+            </div>
+        </div>
+    </div>
+    <a ui-sref="evolution_unemployment" class="pull-left">« Volver a la página anterior: paro</a>
+</div>

@@ -2,7 +2,7 @@
     'use strict';
     angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service',
         'email.controller', 'date.service', 'evolution.controller', 'ui.slider', 'hosts.service', 'employment.controller'
-        , 'inactives.controller', 'infrastructure.controller', 'unemployment.controller', 'nvd3ChartDirectives', 'parse.service'])
+        , 'inactives.controller', 'infrastructure.controller', 'unemployment.controller', 'poblation.controller', 'nvd3ChartDirectives', 'parse.service'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
             $locationProvider.html5Mode(false)
@@ -64,6 +64,9 @@
         }).state('evolution_infrastructure', {
             url: '/evolution_infrastructure',
             templateUrl: 'pages/evolution_infrastructure.html'
+        }).state('evolution_poblation', {
+            url: '/evolution_poblation',
+            templateUrl: 'pages/evolution_poblation.html'
         }).state('home', {
             url: '/home',
             templateUrl: 'pages/home.html'

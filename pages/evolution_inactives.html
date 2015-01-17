@@ -1,14 +1,13 @@
 <div class="container-fluid evolution">
-
     <div>
-        <div style="text-align:center; padding:40px">
+        <div class="evolution_header">
             <img src="img/ic_study.png">
-            <h3>Estudio sobre la evolución del empleo en Castilla y León</h3>
+            <h3>Estudio sobre la evolución del empleo en Castilla y León: población inactiva</h3>
             <div ng-include src="'pages/menu.html'"></div>
         </div>
     </div>
     <div ng-controller="InactivesController as inactivesController" class="row">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <nvd3-stacked-area-chart class="graph"
                                      data="inactivesController.inactives"
                                      showXAxis="true"
@@ -22,7 +21,7 @@
                                      xaxistickformat="inactivesController.xAxisTickFormat()"
                                      interactive="true"/>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
             <h3><b>Distribución de inactivos</b></h3>
 
             <p style="color:white">Se representan, en miles de personas, la composición de la población inactiva
