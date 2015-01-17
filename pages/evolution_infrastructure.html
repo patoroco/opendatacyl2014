@@ -1,0 +1,36 @@
+<div class="container-fluid evolution">
+
+    <div>
+        <div style="text-align:center; padding:40px">
+            <img src="img/ic_study.png">
+            <h3>Estudio sobre la evolución del empleo en Castilla y León: gastos en infraestructuras</h3>
+            <div ng-include src="'pages/menu.html'"></div>
+        </div>
+
+    </div>
+    <div ng-controller="InfrastructureController as infrastructureController">
+        <div class="row">
+            <div class="col-md-6">
+                <nvd3-stacked-area-chart class="graph"
+                                         data="infrastructureController.infrastructure"
+                                         showXAxis="true"
+                                         showYAxis="true"
+                                         showControls="true"
+                                         showLegend="true"
+                                         interpolate="none"
+                                         tooltipcontent="infrastructureController.toolTipContentFunction()"
+                                         xaxistickformat="infrastructureController.xAxisTickFormat()"
+                                         tooltips="true"
+                                         interpolate="linear"
+                                         interactive="true"/>
+            </div>
+            <div class="col-md-6">
+                <h3><b>Gastos en licitaciones</b></h3>
+
+
+            </div>
+        </div>
+        <a ui-sref="evolution_inactives" class="pull-left">« Volver a la página anterior: inactivos</a>
+        <a ui-sref="evolution_unemployment" class="pull-right">Siguiente página: datos de empleo »</a>
+    </div>
+</div>

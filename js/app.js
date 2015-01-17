@@ -2,7 +2,7 @@
     'use strict';
     angular.module('opendatacyl2014', ['ui.router', 'ui.bootstrap', 'jobs.service', 'jobs.controller', 'email.service',
         'email.controller', 'date.service', 'evolution.controller', 'ui.slider', 'hosts.service', 'employment.controller'
-        , 'graphics.controller', 'nvd3ChartDirectives'])
+        , 'inactives.controller', 'infrastructure.controller', 'unemployment.controller', 'nvd3ChartDirectives', 'parse.service'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
             $locationProvider.html5Mode(false)
@@ -24,6 +24,8 @@
         vm.differenceBetweenDays = dateService.differenceBetweenDays;
         vm.goToDetail = goToDetail;
 
+        $rootScope.evolution = false;
+
         $rootScope.$watch('region', function (data) {
             if (data) {
                 center_in_province(data);
@@ -35,7 +37,7 @@
         }
 
         function goToDetail(id) {
-            $state.go('jobDetail', {id : id})
+            $state.go('jobDetail', {id: id})
         }
     }
 
@@ -53,6 +55,15 @@
         }).state('evolution', {
             url: '/evolution',
             templateUrl: 'pages/evolution.html'
+        }).state('evolution_unemployment', {
+            url: '/evolution_unemployment',
+            templateUrl: 'pages/evolution_unemployment.html'
+        }).state('evolution_inactives', {
+            url: '/evolution_inactives',
+            templateUrl: 'pages/evolution_inactives.html'
+        }).state('evolution_infrastructure', {
+            url: '/evolution_infrastructure',
+            templateUrl: 'pages/evolution_infrastructure.html'
         }).state('home', {
             url: '/home',
             templateUrl: 'pages/home.html'

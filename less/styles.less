@@ -9,7 +9,7 @@
   height: 70px;
   text-align: center;
   padding: 10px;
-  z-index: 1000;
+  z-index: 1;
   a {
     top: 10px;
     position: relative;
@@ -35,13 +35,13 @@
 }
 
 #header_call_to_action {
-  color: white;
+  color: @dark-gray;
   font-size: 3em;
   position: relative;
-  margin-top: -120px;
+  margin-top: -70px;
   text-align: center;
-  text-shadow: 1px 1px #000000;
-  margin-bottom: 60px;
+  text-shadow: 1px 1px @dark-gray;
+  margin-bottom: 10px;
 }
 
 #form_search {
@@ -137,7 +137,7 @@
     display: block;
   }
 
-  #evolution {
+  .evolution {
     background-color: @dark-gray;
     color: white !important;
 
@@ -162,11 +162,13 @@
       color: white;
     }
 
-
+    #menu img {
+      width: 200px;
+    }
 
     .graph {
-      color:white;
-      width:100%;
+      color: white;
+      width: 100%;
 
       svg {
         height: 400px;
@@ -180,7 +182,6 @@
       .nv-x .tick line, .nv-y .tick line {
         display: none;
       }
-
 
     }
 

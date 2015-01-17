@@ -7,7 +7,7 @@
   height: 70px;
   text-align: center;
   padding: 10px;
-  z-index: 1000;
+  z-index: 1;
 }
 #header_bar a {
   top: 10px;
@@ -29,13 +29,13 @@
   height: 600px;
 }
 #header_call_to_action {
-  color: white;
+  color: #444444;
   font-size: 3em;
   position: relative;
-  margin-top: -120px;
+  margin-top: -70px;
   text-align: center;
-  text-shadow: 1px 1px #000000;
-  margin-bottom: 60px;
+  text-shadow: 1px 1px #444444;
+  margin-bottom: 10px;
 }
 #form_search {
   background-color: #444444;
@@ -252,43 +252,46 @@ fieldset[disabled] .btn-green.active {
 #content #unsubscribe button {
   display: block;
 }
-#content #evolution {
+#content .evolution {
   background-color: #444444;
   color: white !important;
 }
-#content #evolution slider,
-#content #evolution [slider] {
+#content .evolution slider,
+#content .evolution [slider] {
   color: #444444;
 }
-#content #evolution slider div.bar,
-#content #evolution [slider] div.bar {
+#content .evolution slider div.bar,
+#content .evolution [slider] div.bar {
   background-color: white;
 }
-#content #evolution slider div.handle,
-#content #evolution [slider] div.handle {
+#content .evolution slider div.handle,
+#content .evolution [slider] div.handle {
   border: 0px;
   background-color: #c92b26;
 }
-#content #evolution slider div.handle:after,
-#content #evolution [slider] div.handle:after {
+#content .evolution slider div.handle:after,
+#content .evolution [slider] div.handle:after {
   background-color: white;
 }
-#content #evolution .border {
+#content .evolution .border {
   color: white;
 }
-#content #evolution .graph {
+#content .evolution #menu img {
+  width: 200px;
+}
+#content .evolution .graph {
   color: white;
   width: 100%;
 }
-#content #evolution .graph svg {
+#content .evolution .graph svg {
   height: 400px;
   padding-left: 40px;
 }
-#content #evolution .graph svg text {
+#content .evolution .graph svg text {
   fill: white;
 }
-#content #evolution .graph .nv-x .tick line,
-#content #evolution .graph .nv-y .tick line {
+#content .evolution .graph .nv-x .tick line,
+#content .evolution .graph .nv-y .tick line {
   display: none;
 }
 .radio-with-margin input[type=radio] {

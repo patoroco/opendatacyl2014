@@ -18,6 +18,7 @@
         $scope.$watch('jobsController.when', search);
         $rootScope.$watch('region', updateSearch('region'));
         $rootScope.$watch('text', updateSearch('text'));
+        $rootScope.evolution = false;
 
 
         function search() {
@@ -56,6 +57,8 @@
     function ViewJobController($scope, $state, jobsService, $rootScope, $sce) {
         var vm = this;
         vm.viewDifficulty = viewDifficulty;
+        vm.showCallToAction = showCallToAction;
+        $rootScope.evolution = false;
 
         jobsService.getJobById($state.params.id).success(function (data) {
             vm.job = data;
@@ -87,6 +90,10 @@
             return difficulty(vm.job);
         }
 
+        function showCallToAction(home) {
+            $rootScope.callToAction = home;
+            vm.when = home ? 'week' : 'whenever';
+        }
     }
 
 

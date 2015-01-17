@@ -9,6 +9,7 @@
         vm.sendContactEmail = sendContactEmail;
         vm.unsubscribe = unsubscribe;
         vm.email = $stateParams.email || $scope.email;
+        $rootScope.evolution = false;
 
         function sendEmails() {
             if (vm.email) {

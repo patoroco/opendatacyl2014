@@ -1,4 +1,5 @@
-<div class="container-fluid" ng-controller="ViewJobController as controller">
+<div class="container-fluid" ng-controller="ViewJobController as controller"
+     ng-init="controller.showCallToAction(false)">
     <div class="row">
         <div class="col-md-3">
             <div ng-include src="'pages/sendEmail.html'"></div>
