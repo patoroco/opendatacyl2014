@@ -338,4 +338,14 @@ footer a:visited {
 .orange {
   color: #ff7f00;
 }
+.general_tooltip {
+  border: 2px solid #c92b26;
+  background: white;
+  overflow: visible;
+  padding: 15px 10px;
+}
+.general_tooltip h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
 

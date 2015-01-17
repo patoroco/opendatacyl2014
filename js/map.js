@@ -22,7 +22,7 @@ var points_layer;
 
 function init_map()
 {
-    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 10})
+    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 7})
     .done(function(vis, layers) {
         map = vis.getNativeMap();
         grouped_layer = layers[1].getSubLayer(1);
@@ -34,16 +34,7 @@ function init_map()
             var scope = angular.element($("#region")).scope();
             scope.mainController.goToDetail(data.identificador);
         });
-
-        vis.addOverlay({
-            type: 'tooltip',
-            template: '<h3>{{titulo}}</h3><p>{{localidad}}</p>',
-            width: 200,
-            position: 'bottom|right',
-            layer: points_layer,
-            interactivity: 'cartodb_id, titulo'
-        });
-
+        
         map.on('zoomend', function () {
             if (map.getZoom() > ZOOM_TO_POINT) {
                 show_points_layer();
