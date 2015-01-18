@@ -27,6 +27,13 @@ module.exports = function (grunt) {
             html: ['dist/index.html']
         },
 
+        uglify: {
+            options: {
+                report: 'min',
+                mangle: false
+            }
+        },
+
         ngmin: {
             dist: {
                 files: [
@@ -52,5 +59,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    grunt.registerTask('default', ['less', 'copy', 'useminPrepare', 'concat', 'ngmin', 'cssmin', 'usemin']);
+    grunt.registerTask('default', ['less', 'copy', 'useminPrepare', 'concat', 'ngmin', 'uglify', 'cssmin', 'usemin']);
 };

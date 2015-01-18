@@ -5,7 +5,7 @@
 
     function parseService($http) {
 
-        var colors = [ '#F2E300','#7FB61D', '#0172B6','#E42334','#003956', '#840461',  '#EF8200','#006138', '#01737D'];
+        var colors = ['#F2E300', '#7FB61D', '#0172B6', '#E42334', '#003956', '#840461', '#EF8200', '#006138', '#01737D'];
 
         return {
             getCSV: getCSV
@@ -28,7 +28,7 @@
                         "values": values,
                         "color": colors[column - 1],
                         "text_x": text_x,
-                        "disabled": enabled ? enabled[column-1] : false
+                        "disabled": enabled ? enabled[column - 1] : false
                     });
                 }
                 return elements;

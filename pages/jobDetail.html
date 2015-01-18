@@ -19,19 +19,25 @@
             <div class="job-box" style="margin-top:20px">
                 <div class="row">
                     <div class="col-md-10">
-                        <h4><span class="red">{{controller.job.titulo | capitalize}} en {{controller.job.localidad | capitalize}}</span></h4>
+                        <h4><span class="red">{{controller.job.titulo | capitalize}} en {{controller.job.localidad | capitalize}}</span>
+                        </h4>
                     </div>
-                    <div class="col-md-2"><h4><span class="{{controller.viewDifficulty()[1]}}">{{controller.viewDifficulty()[0]}}</span></h4></div>
+                    <div class="col-md-2"><h4><span class="{{controller.viewDifficulty()[1]}}">{{controller.viewDifficulty()[0]}}</span>
+                    </h4></div>
                 </div>
                 <div class="row" ng-show="controller.job.contrato || controller.job.duracion_del_contrato">
-                    <div class="col-md-6" ng-show="controller.job.contrato"><label>Contrato: </label> {{controller.job.contrato |
+                    <div class="col-md-6" ng-show="controller.job.contrato"><label>Contrato: </label>
+                        {{controller.job.contrato |
                         lowercase}}
                     </div>
-                    <div class="col-md-6" ng-show="controller.job.duracion_del_contrato"><label>Duración:</label> {{controller.job.duracion_del_contrato | lowercase}}</div>
+                    <div class="col-md-6" ng-show="controller.job.duracion_del_contrato"><label>Duración:</label>
+                        {{controller.job.duracion_del_contrato | lowercase}}
+                    </div>
 
                 </div>
                 <div class="row" ng-show="controller.job.jornada || controller.job.numero_plazas">
-                    <div class="col-md-6" ng-show="controller.job.jornada"><label>Jornada: </label>{{controller.job.jornada |
+                    <div class="col-md-6" ng-show="controller.job.jornada"><label>Jornada: </label>{{controller.job.jornada
+                        |
                         lowercase}}
                     </div>
                     <div class="col-md-6" ng-show="controller.job.numero_plazas"><label>Número de plazas: </label>
@@ -40,28 +46,39 @@
                 </div>
                 <div class="row" ng-show="controller.job.descripcion">
                     <div class="col-md-12"><label>Descripción:</label>
+
                         <p ng-bind-html="controller.job.descripcion"></p></div>
                 </div>
                 <div class="row" ng-show="controller.job.oficina_de_empleo_que_gestiona_la_of">
-                    <div class="col-md-12"><label>Oficina que gestiona la oferta: </label>{{controller.job.oficina_de_empleo_que_gestiona_la_of | lowercase}}</div>
+                    <div class="col-md-12"><label>Oficina que gestiona la oferta: </label>{{controller.job.oficina_de_empleo_que_gestiona_la_of
+                        | lowercase}}
+                    </div>
                 </div>
                 <div class="row" ng-show="controller.job.titulacion || controller.job.nivel_profesional">
-                    <div class="col-md-6" ng-show="controller.job.titulacion"><label>Titulación:</label> {{controller.job.titulacion |
+                    <div class="col-md-6" ng-show="controller.job.titulacion"><label>Titulación:</label>
+                        {{controller.job.titulacion |
                         lowercase}}
                     </div>
-                    <div class="col-md-6" ng-show="controller.job.nivel_profesional"><label>Nivel profesional:</label> {{controller.job.nivel_profesional | lowercase}}
+                    <div class="col-md-6" ng-show="controller.job.nivel_profesional"><label>Nivel profesional:</label>
+                        {{controller.job.nivel_profesional | lowercase}}
                     </div>
                 </div>
                 <div class="row" ng-show="controller.job.provincia || controller.job.lugar_de_presentacion">
-                    <div class="col-md-6" ng-show="controller.job.lugar_de_presentacion"><label>Lugar de presentación:</label>
+                    <div class="col-md-6" ng-show="controller.job.lugar_de_presentacion"><label>Lugar de
+                        presentación:</label>
+
                         <p ng-bind-html="controller.job.lugar_de_presentacion"></p>
                     </div>
-                    <div class="col-md-6" ng-show="controller.job.provincia"><label>Provincia:</label> {{controller.job.provincia |
+                    <div class="col-md-6" ng-show="controller.job.provincia"><label>Provincia:</label>
+                        {{controller.job.provincia |
                         capitalize}}
                     </div>
                 </div>
-                <div class="row" ng-show="controller.job.requisitos_necesarios || controller.job.procedimiento_de_seleccion">
-                    <div class="col-md-6" ng-show="controller.job.procedimiento_de_seleccion"><label>Procedimiento:</label>
+                <div class="row"
+                     ng-show="controller.job.requisitos_necesarios || controller.job.procedimiento_de_seleccion">
+                    <div class="col-md-6" ng-show="controller.job.procedimiento_de_seleccion">
+                        <label>Procedimiento:</label>
+
                         <p ng-bind-html="controller.job.procedimiento_de_seleccion"></p>
                     </div>
                     <div class="col-md-6" ng-show="controller.job.requisitos_necesarios"><label>Requisitos:</label>
@@ -86,22 +103,26 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6"><label>Datos de origen:</label>
-                        {{controller.job.oficina_de_empleo_que_gestiona_la_of ? 'Ecyl' : (controller.job.clasificador ?  'empleo público' : 'ofertas de empleo')}}
+                        {{controller.job.oficina_de_empleo_que_gestiona_la_of ? 'Ecyl' : (controller.job.clasificador ?
+                        'empleo público' : 'ofertas de empleo')}}
                     </div>
                     <div class="col-md-6" ng-show="controller.job.tipo"><label>Tipo:</label>
                         {{controller.job.tipo | lowercase}}
                     </div>
                 </div>
                 <div class="row" ng-show="controller.job.empresa_ofertante_es_ett || controller.job.minusvalia">
-                    <div class="col-md-6" ng-show="controller.job.empresa_ofertante_es_ett">{{controller.job.empresa_ofertante_es_ett
+                    <div class="col-md-6" ng-show="controller.job.empresa_ofertante_es_ett">
+                        {{controller.job.empresa_ofertante_es_ett
                         === 'N' ? '' : 'ETT'}}
                     </div>
-                    <div class="col-md-6" ng-show="controller.job.minusvalia"><label>Minusvalía:</label> {{controller.job.minusvalia |
+                    <div class="col-md-6" ng-show="controller.job.minusvalia"><label>Minusvalía:</label>
+                        {{controller.job.minusvalia |
                         lowercase}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6" ng-show="controller.job.enlace_al_contenido"><label><a href="{{controller.job.enlace_al_contenido}}">Enlace a la oferta</a></label>
+                    <div class="col-md-6" ng-show="controller.job.enlace_al_contenido"><label><a
+                            href="{{controller.job.enlace_al_contenido}}">Enlace a la oferta</a></label>
                     </div>
                     <div class="col-md-6"><label>Id:</label> {{controller.job.identificador | lowercase}}</div>
                 </div>

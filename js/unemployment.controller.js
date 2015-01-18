@@ -35,6 +35,7 @@
                 return d % 2 == 0 ? vm.actives[0].text_x[d] : '';
             }
         }
+
         function xAxisTickFormatUnemployed() {
             return function (d) {
                 return vm.unemployed[0].text_x[d];

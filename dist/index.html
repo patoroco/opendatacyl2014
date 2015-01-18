@@ -14,27 +14,10 @@
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css"/>
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.11/cartodb.js"></script>
 
-    <link rel="stylesheet/less" type="text/css" href="less/styles.less"/>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
-
-    <script type="text/javascript">
-        // Replace that on final version with CSS compiled version
-        less = {
-            env: "development", // or "production"
-            async: true,       // load imports async
-            fileAsync: false,   // load imports async when in a page under
-                                // a file protocol
-            poll: 1000,         // when in watch mode, time in ms between polls
-            functions: {},      // user functions, keyed by name
-            dumpLineNumbers: "comments", // or "mediaquery" or "all"
-            relativeUrls: true// whether to adjust url's to be relative
-        };
-    </script>
-
 </head>
 <body onload="init_map()">
 <div ng-controller="MainController as mainController">
-    <div id="header_bar" class="container-fluid"><a ui-sref="home"> <img src="img/logo.png"></a></div>
+    <div id="header_bar" class="container-fluid"><a href="home"> <img src="img/logo.png"></a></div>
     <div id="header_map" ng-hide="$root.evolution"></div>
     <div id="header_call_to_action" ng-show="$root.callToAction" ng-hide="$root.evolution">ENCUENTRA TRABAJO CERCA DE
         TÍ
