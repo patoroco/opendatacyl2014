@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, folder)));
 
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, folder));
+    res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 app.set('port', (process.env.PORT || 8000))

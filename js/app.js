@@ -5,7 +5,7 @@
         , 'inactives.controller', 'infrastructure.controller', 'unemployment.controller', 'poblation.controller', 'nvd3ChartDirectives', 'parse.service'])
         .config(['$stateProvider', '$urlRouterProvider', stateProvider])
         .config(["$locationProvider", function ($locationProvider) {
-            $locationProvider.html5Mode(false)
+            $locationProvider.html5Mode(true)
         }])
         .controller('MainController', ['$scope', '$state', 'dateService', MainController]).filter('capitalize', function () {
             return function (input, all) {
