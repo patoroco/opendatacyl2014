@@ -53,21 +53,19 @@
                     </div>
                 </div>
                 <div class="row" ng-show="controller.job.provincia || controller.job.lugar_de_presentacion">
+                    <div class="col-md-6" ng-show="controller.job.lugar_de_presentacion"><label>Lugar de presentación:</label>
+                        <p ng-bind-html="controller.job.lugar_de_presentacion"></p>
+                    </div>
                     <div class="col-md-6" ng-show="controller.job.provincia"><label>Provincia:</label> {{controller.job.provincia |
                         capitalize}}
                     </div>
-                    <div class="col-md-6" ng-show="controller.job.lugar_de_presentacion"><label>Lugar de presentación:</label>
-                        {{controller.job.lugar_de_presentacion |
-                        lowercase}}
-                    </div>
                 </div>
                 <div class="row" ng-show="controller.job.requisitos_necesarios || controller.job.procedimiento_de_seleccion">
+                    <div class="col-md-6" ng-show="controller.job.procedimiento_de_seleccion"><label>Procedimiento:</label>
+                        <p ng-bind-html="controller.job.procedimiento_de_seleccion"></p>
+                    </div>
                     <div class="col-md-6" ng-show="controller.job.requisitos_necesarios"><label>Requisitos:</label>
                         {{controller.job.requisitos_necesarios | lowercase}}
-                    </div>
-                    <div class="col-md-6" ng-show="controller.job.procedimiento_de_seleccion"><label>Procedimiento:</label>
-                        {{controller.job.procedimiento_de_seleccion |
-                        lowercase}}
                     </div>
                 </div>
                 <div class="row" ng-show="controller.job.plazo_de_presentacion || controller.job.promocion_interna">

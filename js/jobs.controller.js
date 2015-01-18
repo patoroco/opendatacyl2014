@@ -64,6 +64,10 @@
             vm.job = data;
             vm.job.descripcion =
                 $sce.trustAsHtml(vm.job.descripcion);
+            vm.job.lugar_de_presentacion =
+                $sce.trustAsHtml(vm.job.lugar_de_presentacion);
+            vm.job.procedimiento_de_seleccion =
+                $sce.trustAsHtml(vm.job.procedimiento_de_seleccion);
             $rootScope.emailInfo = vm.job.provincia;
             searchByRegionAndText(data.provincia ? data.provincia.toLowerCase() : '', data.titulo.toLowerCase());
         });

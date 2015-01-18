@@ -34,7 +34,7 @@
 </head>
 <body onload="init_map()">
 <div ng-controller="MainController as mainController">
-    <div id="header_bar" class="container-fluid"><a href="home"> <img src="img/logo.png"></a></div>
+    <div id="header_bar" class="container-fluid"><a ui-sref="home"> <img src="img/logo.png"></a></div>
     <div id="header_map" ng-hide="$root.evolution"></div>
     <div id="header_call_to_action" ng-show="$root.callToAction" ng-hide="$root.evolution">ENCUENTRA TRABAJO CERCA DE
         TÍ
@@ -52,7 +52,7 @@
                 <label class="sr-only" for="region">Provincia</label>
                 <select id="region" class="form-control" ng-options="region for region in mainController.regions"
                         ng-model="$root.region">
-                    <option value="">Seleccione una provincia</option>
+                    <option value="">Todas las provincias</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-lg btn-red" ng-click="mainController.search()">Buscar</button>
