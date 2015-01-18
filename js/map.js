@@ -58,11 +58,12 @@ function geolocate() {
         navigator.geolocation.getCurrentPosition(moveToGPS);
     }
 }
+
 function moveToGPS(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    if (latitude > 40 && latitude < 43 && longitude > -2 && longitude < -6) {
-        map.setView([, position.coords.longitude], 9, {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
+    if (latitude > 40.5 && latitude < 43 && longitude > -6 && longitude < -2.4) {
+        map.setView([latitude, longitude], 9, {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
     }
 }
 
