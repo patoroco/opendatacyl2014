@@ -33,11 +33,20 @@
                     why: why
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
+            });
         }
 
         function sendContactEmail(email, name, text) {
-            return $http.post(hostsService.getDomain() + 'email/');
+            return $http({
+                method: 'POST',
+                url: hostsService.getDomain() + 'contact/',
+                data: $.param({
+                    email: email,
+                    name: name,
+                    text: text
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
         }
     }
 })();

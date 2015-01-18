@@ -20,31 +20,50 @@ var map;
 var grouped_layer;
 var points_layer;
 
-function init_map()
-{
-    cartodb.createVis('header_map', VIZ_URL, {zoom: ZOOM_TO_POINT, center: PROVINCE_COORD['Palencia'], minZoom : 5, maxZoom: 7})
-    .done(function(vis, layers) {
-        map = vis.getNativeMap();
-        grouped_layer = layers[1].getSubLayer(1);
-        points_layer = layers[1].getSubLayer(2);
+function init_map() {
+    cartodb.createVis('header_map', VIZ_URL, {
+        zoom: ZOOM_TO_POINT,
+        center: PROVINCE_COORD['Palencia'],
+        minZoom: 5,
+        maxZoom: 7
+    })
+        .done(function (vis, layers) {
+            map = vis.getNativeMap();
+            grouped_layer = layers[1].getSubLayer(1);
+            points_layer = layers[1].getSubLayer(2);
 
-        points_layer.set({ 'interactivity': ['titulo', 'localidad', 'identificador'] });
+            points_layer.set({'interactivity': ['titulo', 'localidad', 'identificador']});
 
-        points_layer.on('featureClick', function(e, pos, latlng, data) {
-            var scope = angular.element($("#region")).scope();
-            scope.mainController.goToDetail(data.identificador);
+            points_layer.on('featureClick', function (e, pos, latlng, data) {
+                var scope = angular.element($("#region")).scope();
+                scope.mainController.goToDetail(data.identificador);
+            });
+
+            map.on('zoomend', function () {
+                if (map.getZoom() > ZOOM_TO_POINT) {
+                    show_points_layer();
+                } else {
+                    show_grouped_layer();
+                }
+            });
+
+            show_points_layer();
+
+            geolocate();
         });
-        
-        map.on('zoomend', function () {
-            if (map.getZoom() > ZOOM_TO_POINT) {
-                show_points_layer();
-            } else {
-                show_grouped_layer();
-            }
-        });
+}
 
-        show_points_layer();
-    });
+function geolocate() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(moveToGPS);
+    }
+}
+function moveToGPS(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    if (latitude > 40 && latitude < 43 && longitude > -2 && longitude < -6) {
+        map.setView([, position.coords.longitude], 9, {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
+    }
 }
 
 
@@ -56,11 +75,6 @@ function show_grouped_layer() {
 function show_points_layer() {
     grouped_layer.hide();
     points_layer.show();
-}
-
-function current_position_updated(location) {
-    var new_position = [location.coords.latitude, location.coords.longitude];
-    map.setView(new_position, map.getZoom(), {pan: {animate: true, duration: 0.5, easeLinearity: 0.5}});
 }
 
 function center_in_province(province) {
