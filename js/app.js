@@ -15,8 +15,6 @@
 
     var api = 'http://178.62.198.195/api/';
 
-    //TODO ui-router y html5mode (allow links in new window)
-
     function MainController($rootScope, $state, dateService) {
         var vm = this;
         vm.regions = ['Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca', 'Segovia', 'Soria', 'Valladolid', 'Zamora'];
