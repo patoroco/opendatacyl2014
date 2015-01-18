@@ -15,7 +15,7 @@
             if (vm.email) {
                 var text = $rootScope.text;
                 var region = $rootScope.region;
-                emailService.sendEmailWithCriteria(vm.email, region, text).success(function (data, status) {
+                emailService.sendEmailWithCriteria(vm.email, region, text || (region || $rootScope.emailInfo)).success(function (data, status) {
                     vm.sent = 'Se ha apuntado a las alertas de nuevas ofertas' + (text ? (' de ' + text) : '') + (region ? (' para la provincia ' + region) : '');
                 }).error(function (data, status) {
                     vm.fail = 'No se pudo realizar la operación en este momento. Inténtelo más tarde';

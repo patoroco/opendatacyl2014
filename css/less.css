@@ -34,7 +34,6 @@
   position: relative;
   margin-top: -70px;
   text-align: center;
-  text-shadow: 1px 1px #444444;
   margin-bottom: 10px;
 }
 #form_search {
@@ -350,6 +349,9 @@ footer a:visited {
 }
 .orange {
   color: #ff7f00;
+}
+.white {
+  color: #ffffff;
 }
 .general_tooltip {
   border: 2px solid #c92b26;
