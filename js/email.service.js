@@ -36,14 +36,14 @@
             });
         }
 
-        function sendContactEmail(email, name, text) {
+        function sendContactEmail(email, name, message) {
             return $http({
                 method: 'POST',
                 url: hostsService.getDomain() + 'contact/',
                 data: $.param({
                     email: email,
                     name: name,
-                    text: text
+                    message: message
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             });
