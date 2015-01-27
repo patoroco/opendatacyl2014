@@ -1,7 +1,4 @@
-var CYLJOB_URL = "http://localhost:8000";
 var VIZ_URL = 'http://opendatacyl.cartodb.com/api/v2/viz/81b7caf8-9c49-11e4-8bfa-0e018d66dc29/viz.json';
-var TILES_URL = 'https://cartocdn_{s}.global.ssl.fastly.net/base-eco/{z}/{x}/{y}.png';
-
 var ZOOM_TO_POINT = 7;
 
 var PROVINCE_COORD = {
